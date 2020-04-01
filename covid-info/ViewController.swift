@@ -32,9 +32,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
             pageVC.setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
             titleLabel.text = firstVC.title
         }
-        
-        
-        
+
     }
     
     

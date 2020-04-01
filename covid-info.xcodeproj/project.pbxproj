@@ -69,6 +69,8 @@
 		9CDE224A2434AA0F00A3505A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9CDE224C2434AA2B00A3505A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9CDE224E2434AA4300A3505A /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9CDE22532434C06700A3505A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9CDE22542434C06D00A3505A /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ru; path = ru.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -366,6 +368,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				9CDE22062433BB9400A3505A /* Base */,
+				9CDE22532434C06700A3505A /* en */,
+				9CDE22542434C06D00A3505A /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

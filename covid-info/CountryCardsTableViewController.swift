@@ -89,10 +89,7 @@ class CountryCardsTableViewController : UITableViewController {
         let deathsDevLabel : UILabel = cell.viewWithTag(432) as! UILabel
         deathsDevLabel.text = "\(cards[indexPath.row].deathDeviation)"
         
-        let casesLabel : UILabel = cell.viewWithTag(3) as! UILabel
-        casesLabel.text = "cases".localized().uppercased()
-        let deathsLabel : UILabel = cell.viewWithTag(4) as! UILabel
-        deathsLabel.text = "deaths".localized().uppercased()
+
 
        return cell
     }

@@ -110,8 +110,8 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pft-ZJ-hqf">
                                                                     <rect key="frame" x="0.0" y="0.0" width="114.5" height="32"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="211" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ACTIVE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KCn-4m-6Pa">
-                                                                            <rect key="frame" x="40" y="0.0" width="34.5" height="16"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="211" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="БОЛЕЮТ СЕЙЧАС" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KCn-4m-6Pa">
+                                                                            <rect key="frame" x="14.5" y="0.0" width="86" height="16"/>
                                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -127,8 +127,8 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xgf-3D-jg0">
                                                                     <rect key="frame" x="114.5" y="0.0" width="115" height="32"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="221" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CRITICAL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h62-A1-aqc">
-                                                                            <rect key="frame" x="35.5" y="0.0" width="44" height="16"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="221" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="В КРИТИЧЕСКОМ СОСТОЯНИИ" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h62-A1-aqc">
+                                                                            <rect key="frame" x="14" y="0.0" width="87.5" height="16"/>
                                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -144,8 +144,8 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="e2p-CG-muw">
                                                                     <rect key="frame" x="229.5" y="0.0" width="114.5" height="32"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="231" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RECOVERED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GwK-fm-6i5">
-                                                                            <rect key="frame" x="28" y="0.0" width="58.5" height="16"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="231" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ВЫЗДОРОВЕЛИ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GwK-fm-6i5">
+                                                                            <rect key="frame" x="19" y="0.0" width="76.5" height="16"/>
                                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -163,7 +163,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ny2-Gc-jVB">
                                                             <rect key="frame" x="0.0" y="92" width="344" height="32.5"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CASES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="42M-wj-04J">
+                                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="БОЛЕЮТ" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="42M-wj-04J">
                                                                     <rect key="frame" x="0.0" y="0.0" width="86" height="32.5"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                                     <nil key="textColor"/>
@@ -172,7 +172,7 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="w24-n9-TSi">
                                                                     <rect key="frame" x="86" y="0.0" width="86" height="32.5"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="311" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tq4-7t-lns">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="311" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ЗА ВСЁ ВРЕМЯ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tq4-7t-lns">
                                                                             <rect key="frame" x="0.0" y="0.0" width="86" height="12"/>
                                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
                                                                             <nil key="textColor"/>
@@ -189,7 +189,7 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fai-iu-0QQ">
                                                                     <rect key="frame" x="172" y="0.0" width="86" height="32.5"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="321" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TODAY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1AK-gF-SC1">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="321" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="СЕГОДНЯ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1AK-gF-SC1">
                                                                             <rect key="frame" x="0.0" y="0.0" width="86" height="12"/>
                                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
                                                                             <nil key="textColor"/>
@@ -206,7 +206,7 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XvK-JR-cVO">
                                                                     <rect key="frame" x="258" y="0.0" width="86" height="32.5"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="331" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEVIATION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKZ-d9-t0j">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="331" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ОТКЛОНЕНИЕ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yKZ-d9-t0j">
                                                                             <rect key="frame" x="0.0" y="0.0" width="86" height="12"/>
                                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
                                                                             <nil key="textColor"/>
@@ -225,7 +225,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Vur-nn-MzF">
                                                             <rect key="frame" x="0.0" y="134.5" width="344" height="32.5"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEATHS" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vw6-de-rXB">
+                                                                <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="УМЕРЛО" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vw6-de-rXB">
                                                                     <rect key="frame" x="0.0" y="0.0" width="86" height="32.5"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                                     <nil key="textColor"/>
@@ -234,7 +234,7 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="q3p-nN-VA0">
                                                                     <rect key="frame" x="86" y="0.0" width="86" height="32.5"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="411" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuP-JT-Ne0">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="411" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ЗА ВСЁ ВРЕМЯ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VuP-JT-Ne0">
                                                                             <rect key="frame" x="0.0" y="0.0" width="86" height="12"/>
                                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
                                                                             <nil key="textColor"/>
@@ -251,7 +251,7 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FGA-7E-JAR">
                                                                     <rect key="frame" x="172" y="0.0" width="86" height="32.5"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="421" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TODAY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLC-rd-4W3">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="421" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="СЕГОДНЯ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLC-rd-4W3">
                                                                             <rect key="frame" x="0.0" y="0.0" width="86" height="12"/>
                                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
                                                                             <nil key="textColor"/>
@@ -268,7 +268,7 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ikf-eB-da8">
                                                                     <rect key="frame" x="258" y="0.0" width="86" height="32.5"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="431" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DEVIATION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMP-oa-jaS">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="431" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ОТКЛОНЕНИЕ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMP-oa-jaS">
                                                                             <rect key="frame" x="0.0" y="0.0" width="86" height="12"/>
                                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
                                                                             <nil key="textColor"/>
