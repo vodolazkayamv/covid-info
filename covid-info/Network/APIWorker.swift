@@ -120,7 +120,7 @@ class APIWorker {
                 
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                decoder.dateDecodingStrategy = .millisecondsSince1970
+                decoder.dateDecodingStrategy = .iso8601
                 let newsResponse : NewsApiResponse = try decoder.decode(NewsApiResponse.self, from: dataResponse)
                 
                 print(newsResponse.articles.count, newsResponse.totalResults)
@@ -143,7 +143,7 @@ class APIWorker {
                     
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    decoder.dateDecodingStrategy = .millisecondsSince1970
+                    decoder.dateDecodingStrategy = .iso8601
                     let newsResponse : NewsApiResponse = try decoder.decode(NewsApiResponse.self, from: dataResponse)
                     
                     print(newsResponse.articles.count, newsResponse.totalResults)

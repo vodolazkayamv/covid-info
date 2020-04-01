@@ -34,17 +34,38 @@ class NewsCardsTableViewController : UITableViewController {
        
         let cardView : UIView = cell.viewWithTag(10) as! UIView
         cardView.layer.cornerRadius = 10
-        cardView.dropShadow()
+        cardView.layer.shadowColor = UIColor.systemIndigo.cgColor
+        cardView.layer.shadowOffset = CGSize(width: 1.5, height: 1.5)
+        cardView.layer.shadowOpacity = 0.2
+        cardView.layer.shadowRadius = 3.0
 
         let article = articles[indexPath.row]
         let titleLabel = cell.viewWithTag(2) as! UILabel
         titleLabel.text = article.title
+        
+        if let update : Date = article.publishedAt {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .long
+            formatter.timeStyle = .medium
+            formatter.locale = Locale.current
+            
+            let upstring = formatter.string(from: update)
+            
+            let label : UILabel = cell.viewWithTag(3) as! UILabel
+            label.text = upstring
+        }
+        
+        
         let descriptionLabel = cell.viewWithTag(4) as! UILabel
         descriptionLabel.text = article.description
         
         let imageView : UIImageView = cell.viewWithTag(11) as! UIImageView
+        imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius = 10
+        imageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         imageView.image = UIImage.init(named: "placeholder")
         imageView.downloadImageFrom(link:  article.urlToImage, contentMode: .scaleAspectFill)
+        
         
        return cell
     }

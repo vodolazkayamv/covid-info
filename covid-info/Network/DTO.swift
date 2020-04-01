@@ -152,7 +152,7 @@ struct NewsArticle : Decodable {
     let title : String
     let url : String
     let urlToImage : String
-    let publishedAt : String
+    let publishedAt : Date?
     let content : String?
     let description : String
 }
@@ -169,7 +169,7 @@ struct Article {
     let author : String?
     let title : String
     let url : String
-    let publishedAt : String
+    let publishedAt : Date?
     let content : String?
     let description : String
     var image : UIImage?

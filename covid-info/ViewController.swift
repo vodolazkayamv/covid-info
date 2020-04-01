@@ -131,7 +131,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
         {
             for (_, data) in dataReceived
             {
-//                self.newsVC_Top.articles = data.articles
+                self.newsVC_Top.articles = data.articles
             }
         }
     }

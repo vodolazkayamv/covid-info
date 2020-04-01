@@ -27,17 +27,6 @@ class XmlParserManager: NSObject, XMLParserDelegate {
     
     var parser = XMLParser()
     
-    /*
-     var feeds = NSMutableArray()
-     var elements = NSMutableDictionary()
-     var element = NSString()
-     var ftitle = NSMutableString()
-     var link = NSMutableString()
-     var img:  [AnyObject] = []
-     var fdescription = NSMutableString()
-     var fdate = NSMutableString()
-     */
-    
     // initilise parser
     func initWithURL(_ url :URL) -> AnyObject {
         startParse(url)
