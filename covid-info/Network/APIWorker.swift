@@ -111,80 +111,60 @@ class APIWorker {
         task.resume()
     }
     
-    class func askCOVIDStatisticsRussia_Actual() {
-        guard let url = URL(string: "https://corona.lmao.ninja/countries/Russia") else {return}
-        
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let dataResponse = data,
-                error == nil else {
-                    print(error?.localizedDescription ?? "Response Error")
-                    return }
+    
+    class func askNewsApi_Health() {
+        askAPIvia(urlString: "https://newsapi.org/v2/top-headlines?apiKey=8c8b05d0b0af4876a95cb405b5c4b874&country=ru&category=health&q=коронавирус".encodeUrl, completionHandler: { dataResponse in
             do{
-                //here dataResponse received from a network request
-                //                let jsonResponse = try JSONSerialization.jsonObject(with: dataResponse, options: []) as AnyObject
-                //                print(jsonResponse) //Response result
+//                let jsonResponse = try JSONSerialization.jsonObject(with: dataResponse, options: []) as AnyObject
+//                print(jsonResponse) //Response result
                 
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let result : COVIDStat = try decoder.decode(COVIDStat.self, from: dataResponse)
-                //let stats : [COVIDStat] = result.filter{ $0.country == "Russia" }
+                decoder.dateDecodingStrategy = .millisecondsSince1970
+                let newsResponse : NewsApiResponse = try decoder.decode(NewsApiResponse.self, from: dataResponse)
                 
-                print(result)
-                let dataDict:[String: COVIDStat] = ["result": result]
-                
-                NotificationCenter.default.post(name: .didReceiveNativeCountryData, object: self, userInfo: dataDict)
-                
-                
+                print(newsResponse.articles.count, newsResponse.totalResults)
+                let dataDict:[String: NewsApiResponse] = ["result": newsResponse]
+                NotificationCenter.default.post(name: .didReceiveNewsHealthData, object: self, userInfo: dataDict)
+            
             } catch let parsingError {
                 print("Error", parsingError)
             }
-        }
-        task.resume()
+            
+        })
     }
     
-    class func askCOVIDStatisticsRussia_Historical() {
-        guard let url = URL(string: "https://corona.lmao.ninja/v2/historical/russia") else {return}
-        
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let dataResponse = data,
-                error == nil else {
-                    print(error?.localizedDescription ?? "Response Error")
-                    return }
-            do{
-                //here dataResponse received from a network request
-                //                let jsonResponse = try JSONSerialization.jsonObject(with: dataResponse, options: []) as AnyObject
-                //                print(jsonResponse) //Response result
-                
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let result : History = try decoder.decode(History.self, from: dataResponse)
-                //let stats : [COVIDStat] = result.filter{ $0.country == "Russia" }
-                
-                var h : HistoryDecoded = HistoryDecoded(country: result.country, casesHistory: [], deathHistory: [])
-                for item in result.timeline.cases {
+    //
+    class func askNewsApi_Top() {
+            askAPIvia(urlString: "http://newsapi.org/v2/top-headlines?apiKey=8c8b05d0b0af4876a95cb405b5c4b874&country=ru&q=коронавирус".encodeUrl, completionHandler: { dataResponse in
+                do{
+    //                let jsonResponse = try JSONSerialization.jsonObject(with: dataResponse, options: []) as AnyObject
+    //                print(jsonResponse) //Response result
                     
-                    let isoDate = item.key
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "MM/dd/yy"
-                    let date = dateFormatter.date(from:isoDate)!
+                    let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    decoder.dateDecodingStrategy = .millisecondsSince1970
+                    let newsResponse : NewsApiResponse = try decoder.decode(NewsApiResponse.self, from: dataResponse)
                     
-                    let record : Case = Case(date: date, number: item.value)
-                    h.casesHistory.append(record)
+                    print(newsResponse.articles.count, newsResponse.totalResults)
+                    let dataDict:[String: NewsApiResponse] = ["result": newsResponse]
+                    NotificationCenter.default.post(name: .didReceiveNewsTopData, object: self, userInfo: dataDict)
+                
+                } catch let parsingError {
+                    print("Error", parsingError)
                 }
-                h.casesHistory = h.casesHistory.sorted(by: {
-                    $0.date.compare($1.date) == .orderedDescending
-                })
                 
-                print(result)
-                let dataDict:[String: History] = ["result": result]
-                
-                NotificationCenter.default.post(name: .didReceiveNativeCountryData, object: self, userInfo: dataDict)
-                
-                
-            } catch let parsingError {
-                print("Error", parsingError)
-            }
+            })
         }
-        task.resume()
+}
+
+extension String{
+    var encodeUrl : String
+    {
+        return self.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
+    }
+    var decodeUrl : String
+    {
+        return self.removingPercentEncoding!
     }
 }

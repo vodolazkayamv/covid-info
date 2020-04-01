@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C9D4FDD2434E2C700B1C9EC /* NewsCardsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9D4FDC2434E2C700B1C9EC /* NewsCardsTableViewController.swift */; };
 		9CDE22002433BB9400A3505A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDE21FF2433BB9400A3505A /* AppDelegate.swift */; };
 		9CDE22022433BB9400A3505A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDE22012433BB9400A3505A /* SceneDelegate.swift */; };
 		9CDE22042433BB9400A3505A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDE22032433BB9400A3505A /* ViewController.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9C9D4FDC2434E2C700B1C9EC /* NewsCardsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCardsTableViewController.swift; sourceTree = "<group>"; };
 		9CDE21FC2433BB9400A3505A /* covid-info.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "covid-info.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CDE21FF2433BB9400A3505A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9CDE22012433BB9400A3505A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				9CDE22052433BB9400A3505A /* Main.storyboard */,
 				9CDE22452434AA0300A3505A /* Resources */,
 				9CDE22322433BE0D00A3505A /* CountryCardsTableViewController.swift */,
+				9C9D4FDC2434E2C700B1C9EC /* NewsCardsTableViewController.swift */,
 				9CDE220B2433BB9700A3505A /* Assets.xcassets */,
 				9CDE220D2433BB9700A3505A /* LaunchScreen.storyboard */,
 				9CDE22102433BB9700A3505A /* Info.plist */,
@@ -324,6 +327,7 @@
 				9CDE223A2433BEB800A3505A /* Extensions.swift in Sources */,
 				9CDE223F2433BEC000A3505A /* APIWorker.swift in Sources */,
 				9CDE22332433BE0D00A3505A /* CountryCardsTableViewController.swift in Sources */,
+				9C9D4FDD2434E2C700B1C9EC /* NewsCardsTableViewController.swift in Sources */,
 				9CDE22022433BB9400A3505A /* SceneDelegate.swift in Sources */,
 				9CDE220A2433BB9400A3505A /* covid_info.xcdatamodeld in Sources */,
 				9CDE22392433BEB800A3505A /* ColorExtensions.swift in Sources */,

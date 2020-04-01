@@ -23,9 +23,8 @@ class CountryCardsTableViewController : UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "123"
-        APIWorker.askCOVIDStatisticsAll()
-        NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData(_:)), name: .didReceiveCountryData, object: APIWorker.self)
+        self.title = "COVID-19 Daily Global Update by country"
+        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -34,7 +33,7 @@ class CountryCardsTableViewController : UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        // Fetch a cell of the appropriate type.
-       let cell = tableView.dequeueReusableCell(withIdentifier: "cellID", for: indexPath)
+       let cell = tableView.dequeueReusableCell(withIdentifier: "countryCell", for: indexPath)
        
         let cardView : UIView = cell.viewWithTag(10) as! UIView
         cardView.layer.cornerRadius = 10
@@ -94,15 +93,6 @@ class CountryCardsTableViewController : UITableViewController {
        return cell
     }
     
-    @objc func onDidReceiveData(_ notification: Notification)
-    {
-        if let dataReceived = notification.userInfo as? [String: [JHUCountryInfo]]
-        {
-            for (_, dataArray) in dataReceived
-            {
-                cards = dataArray
-            }
-        }
-    }
+    
     
 }

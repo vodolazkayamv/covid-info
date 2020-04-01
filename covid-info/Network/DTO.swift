@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct COVIDStat : Decodable {
     let active, cases, critical, deaths, recovered, todayCases, todayDeaths: Int
@@ -136,4 +137,40 @@ struct JHUCountryInfo : CustomStringConvertible, Equatable {
             return history
         }
     }
+}
+
+
+
+struct Source : Decodable {
+    let id : String?
+    let name : String
+}
+
+struct NewsArticle : Decodable {
+    let source : Source
+    let author : String?
+    let title : String
+    let url : String
+    let urlToImage : String
+    let publishedAt : String
+    let content : String?
+    let description : String
+}
+
+struct NewsApiResponse : Decodable {
+    let status : String
+    let totalResults : Int
+    let articles : [NewsArticle]
+}
+
+struct Article {
+    let id : Int
+    let source : Source
+    let author : String?
+    let title : String
+    let url : String
+    let publishedAt : String
+    let content : String?
+    let description : String
+    var image : UIImage?
 }

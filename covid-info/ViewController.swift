@@ -12,10 +12,13 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
     
     
     @IBOutlet weak var titleLabel: UILabel!
-    
     @IBOutlet weak var containerStackView: UIStackView!
     
     let pageVC : UIPageViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PageVC") as! UIPageViewController
+    
+    let countriesVC : CountryCardsTableViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CardsTableVC") as! CountryCardsTableViewController
+    let newsVC_Health : NewsCardsTableViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewsTableVC") as! NewsCardsTableViewController
+    let newsVC_Top : NewsCardsTableViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewsTableVC") as! NewsCardsTableViewController
     
     override func viewWillAppear(_ animated: Bool) {
         self.containerStackView.addArrangedSubview(pageVC.view)
@@ -33,14 +36,23 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
             titleLabel.text = firstVC.title
         }
 
+        APIWorker.askCOVIDStatisticsAll()
+        APIWorker.askNewsApi_Health()
+        APIWorker.askNewsApi_Top()
+        
+        self.newsVC_Health.title = "Новости здравоохранения"
+        self.newsVC_Top.title = "Главные новости"
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveCountryData(_:)), name: .didReceiveCountryData, object: APIWorker.self)
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveNewsHealthData(_:)), name: .didReceiveNewsHealthData, object: APIWorker.self)
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveNewsTopData(_:)), name: .didReceiveNewsTopData, object: APIWorker.self)
+        
     }
     
     
     fileprivate lazy var pages: [UIViewController] = {
         return [
-            self.getViewController(withIdentifier: "RedVC"),
-            self.getViewController(withIdentifier: "CardsTableVC"),
-            self.getViewController(withIdentifier: "RedVC")
+            self.countriesVC, self.newsVC_Health, self.newsVC_Top
         ]
     }()
     fileprivate func getViewController(withIdentifier identifier: String) -> UIViewController
@@ -101,6 +113,39 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
         self.titleLabel.text = pageViewController.viewControllers!.first!.title
     }
     
+    
+    @objc func onDidReceiveNewsHealthData(_ notification: Notification)
+    {
+        if let dataReceived = notification.userInfo as? [String: NewsApiResponse]
+        {
+            for (_, data) in dataReceived
+            {
+                self.newsVC_Health.articles = data.articles
+            }
+        }
+    }
+    
+    @objc func onDidReceiveNewsTopData(_ notification: Notification)
+    {
+        if let dataReceived = notification.userInfo as? [String: NewsApiResponse]
+        {
+            for (_, data) in dataReceived
+            {
+//                self.newsVC_Top.articles = data.articles
+            }
+        }
+    }
+    
+    @objc func onDidReceiveCountryData(_ notification: Notification)
+    {
+        if let dataReceived = notification.userInfo as? [String: [JHUCountryInfo]]
+        {
+            for (_, dataArray) in dataReceived
+            {
+                self.countriesVC.cards = dataArray
+            }
+        }
+    }
 }
 
 
