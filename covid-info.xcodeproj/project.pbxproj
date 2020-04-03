@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C95A89A2437560900D19FF0 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C95A8992437560900D19FF0 /* StringExtensions.swift */; };
 		9C9D4FDD2434E2C700B1C9EC /* NewsCardsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9D4FDC2434E2C700B1C9EC /* NewsCardsTableViewController.swift */; };
 		9CDE22002433BB9400A3505A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDE21FF2433BB9400A3505A /* AppDelegate.swift */; };
 		9CDE22022433BB9400A3505A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDE22012433BB9400A3505A /* SceneDelegate.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9C95A8992437560900D19FF0 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		9C9D4FDC2434E2C700B1C9EC /* NewsCardsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCardsTableViewController.swift; sourceTree = "<group>"; };
 		9CDE21FC2433BB9400A3505A /* covid-info.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "covid-info.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CDE21FF2433BB9400A3505A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -123,16 +125,16 @@
 		9CDE21FE2433BB9400A3505A /* covid-info */ = {
 			isa = PBXGroup;
 			children = (
+				9CDE22102433BB9700A3505A /* Info.plist */,
 				9CDE21FF2433BB9400A3505A /* AppDelegate.swift */,
 				9CDE22012433BB9400A3505A /* SceneDelegate.swift */,
 				9CDE22032433BB9400A3505A /* ViewController.swift */,
-				9CDE22052433BB9400A3505A /* Main.storyboard */,
 				9CDE22452434AA0300A3505A /* Resources */,
+				9CDE22052433BB9400A3505A /* Main.storyboard */,
+				9CDE220D2433BB9700A3505A /* LaunchScreen.storyboard */,
 				9CDE22322433BE0D00A3505A /* CountryCardsTableViewController.swift */,
 				9C9D4FDC2434E2C700B1C9EC /* NewsCardsTableViewController.swift */,
 				9CDE220B2433BB9700A3505A /* Assets.xcassets */,
-				9CDE220D2433BB9700A3505A /* LaunchScreen.storyboard */,
-				9CDE22102433BB9700A3505A /* Info.plist */,
 				9CDE22082433BB9400A3505A /* covid_info.xcdatamodeld */,
 				9CDE223B2433BEC000A3505A /* Network */,
 				9CDE22342433BEB800A3505A /* Helpers */,
@@ -164,6 +166,7 @@
 				9CDE22352433BEB800A3505A /* Logger.swift */,
 				9CDE22362433BEB800A3505A /* ColorExtensions.swift */,
 				9CDE22372433BEB800A3505A /* Extensions.swift */,
+				9C95A8992437560900D19FF0 /* StringExtensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				9CDE220A2433BB9400A3505A /* covid_info.xcdatamodeld in Sources */,
 				9CDE22392433BEB800A3505A /* ColorExtensions.swift in Sources */,
 				9CDE22402433BEC000A3505A /* DTO.swift in Sources */,
+				9C95A89A2437560900D19FF0 /* StringExtensions.swift in Sources */,
 				9CDE22412433BEC000A3505A /* XMLParserManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,14 +8,13 @@
 
 import Foundation
 import UIKit
-//FEC8D8
+
 
 extension UIColor {
     public class var patelPink: UIColor {
         return UIColor.init(hexString: "FEC8D8");
     }
     public class var pastelDeathFont: UIColor {
-//        return UIColor.init(hexString: "F07249");
         return UIColor.init(hexString: "FF9AA2");
     }
     public class var pastelDeathBackground: UIColor {
