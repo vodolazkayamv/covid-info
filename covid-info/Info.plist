@@ -4,6 +4,11 @@
 <dict>
 	<key>NSAppTransportSecurity</key>
 	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>newsapi.org</key>
+			<string></string>
+		</dict>
 		<key>NSAllowsArbitraryLoadsForMedia</key>
 		<true/>
 		<key>NSAllowsArbitraryLoads</key>
@@ -24,7 +29,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-1185800084435080~3492690827</string>
+	<string>ca-app-pub-1185800084435080~8302859526</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
