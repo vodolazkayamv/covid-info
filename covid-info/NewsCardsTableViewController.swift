@@ -9,8 +9,12 @@
 import Foundation
 import UIKit
 import SafariServices
+import GoogleMobileAds
 
 class NewsCardsTableViewController : UITableViewController {
+
+    var  bannerView : GADBannerView =  GADBannerView(adSize: kGADAdSizeBanner)
+
     var articles : [NewsArticle] = [] {
         didSet {
             print(articles.count)
@@ -20,59 +24,89 @@ class NewsCardsTableViewController : UITableViewController {
         }
     }
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        bannerView.adUnitID = "ca-app-pub-1185800084435080/8661257022"
+        bannerView.rootViewController = self
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return articles.count
+        // здесь еще подправим
+        return articles.count + articles.count / 5;
     }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+
+     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        // Fetch a cell of the appropriate type.
-       let cell = tableView.dequeueReusableCell(withIdentifier: "newsCell", for: indexPath)
-       
-        let cardView : UIView = cell.viewWithTag(10) as! UIView
-        cardView.layer.cornerRadius = 10
-        cardView.layer.shadowColor = UIColor.systemIndigo.cgColor
-        cardView.layer.shadowOffset = CGSize(width: 1.5, height: 1.5)
-        cardView.layer.shadowOpacity = 0.2
-        cardView.layer.shadowRadius = 3.0
 
-        let article = articles[indexPath.row]
-        let titleLabel = cell.viewWithTag(2) as! UILabel
-        titleLabel.text = article.title
-        
-        if let update : Date = article.publishedAt {
-            let formatter = DateFormatter()
-            formatter.dateStyle = .long
-            formatter.timeStyle = .medium
-            formatter.locale = Locale.current
-            
-            let upstring = formatter.string(from: update)
-            
-            let label : UILabel = cell.viewWithTag(3) as! UILabel
-            label.text = upstring
-        }
-        
-        
-        let descriptionLabel = cell.viewWithTag(4) as! UILabel
-        descriptionLabel.text = article.description
-        
-        let imageView : UIImageView = cell.viewWithTag(11) as! UIImageView
-        imageView.layer.masksToBounds = true
-        imageView.layer.cornerRadius = 10
-        imageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        imageView.image = UIImage.init(named: "placeholder")
-        if article.urlToImage.contains("http") {
-            imageView.downloadImageFrom(link:  article.urlToImage, contentMode: .scaleAspectFill)
+       let isAddCell = (indexPath.row % 5 == 1);
+       let cellIDStr = (isAddCell ? "adCell" : "newsCell");
+       let cell = tableView.dequeueReusableCell(withIdentifier: cellIDStr, for: indexPath)
+        if (isAddCell) {
+            // Use adView
+            let adView : UIView = cell.viewWithTag(1000) as! UIView
+            bannerView.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(bannerView)
+            view.addConstraints(
+                [NSLayoutConstraint(item: bannerView,
+                                    attribute: .bottom,
+                                    relatedBy: .equal,
+                                    toItem: view.safeAreaLayoutGuide.bottomAnchor,
+                                    attribute: .top,
+                                    multiplier: 1,
+                                    constant: 0),
+                 NSLayoutConstraint(item: bannerView,
+                                    attribute: .centerX,
+                                    relatedBy: .equal,
+                                    toItem: view,
+                                    attribute: .centerX,
+                                    multiplier: 1,
+                                    constant: 0)
+            ])
+            bannerView.load(GADRequest())
         } else {
-            let urlString = "https" + article.urlToImage
-            imageView.downloadImageFrom(link: urlString, contentMode: .scaleAspectFill)
+            let cardView : UIView = cell.viewWithTag(10) as! UIView
+            cardView.layer.cornerRadius = 10
+            cardView.layer.shadowColor = UIColor.systemIndigo.cgColor
+            cardView.layer.shadowOffset = CGSize(width: 1.5, height: 1.5)
+            cardView.layer.shadowOpacity = 0.2
+            cardView.layer.shadowRadius = 3.0
+
+            let article = articles[indexPath.row]
+            let titleLabel = cell.viewWithTag(2) as! UILabel
+            titleLabel.text = article.title
+
+            if let update : Date = article.publishedAt {
+                let formatter = DateFormatter()
+                formatter.dateStyle = .long
+                formatter.timeStyle = .medium
+                formatter.locale = Locale.current
+
+                let upstring = formatter.string(from: update)
+
+                let label : UILabel = cell.viewWithTag(3) as! UILabel
+                label.text = upstring
+            }
+
+            let descriptionLabel = cell.viewWithTag(4) as! UILabel
+            descriptionLabel.text = article.description
+
+            let imageView : UIImageView = cell.viewWithTag(11) as! UIImageView
+            imageView.layer.masksToBounds = true
+            imageView.layer.cornerRadius = 10
+            imageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+            imageView.image = UIImage.init(named: "placeholder")
+            if article.urlToImage.contains("http") {
+                imageView.downloadImageFrom(link:  article.urlToImage, contentMode: .scaleAspectFill)
+            } else {
+                let urlString = "https" + article.urlToImage
+                imageView.downloadImageFrom(link: urlString, contentMode: .scaleAspectFill)
+
+            }
 
         }
-        
-        
+
        return cell
     }
     

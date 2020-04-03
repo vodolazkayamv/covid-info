@@ -417,6 +417,27 @@
                                     <constraint firstItem="HlZ-qF-n8B" firstAttribute="height" secondItem="tXv-qA-e77" secondAttribute="height" id="Z2z-7l-dny"/>
                                 </constraints>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="adCell" rowHeight="65" id="6bO-L3-eGK">
+                                <rect key="frame" x="0.0" y="282" width="414" height="65"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6bO-L3-eGK" id="sxK-gR-McA">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view tag="1000" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SqB-1L-DTi">
+                                            <rect key="frame" x="34" y="10" width="345" height="44"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="SqB-1L-DTi" secondAttribute="height" multiplier="345:44" id="7RU-g6-dbu"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="SqB-1L-DTi" firstAttribute="centerX" secondItem="sxK-gR-McA" secondAttribute="centerX" id="6ft-dm-yZ5"/>
+                                        <constraint firstItem="SqB-1L-DTi" firstAttribute="centerY" secondItem="sxK-gR-McA" secondAttribute="centerY" id="pPG-Ab-DGy"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="wTz-FP-j7E" id="Djv-wx-aa0"/>

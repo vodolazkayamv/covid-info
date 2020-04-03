@@ -417,6 +417,27 @@
                                     <constraint firstItem="UOq-Cx-eWX" firstAttribute="height" secondItem="hJM-sd-v6P" secondAttribute="height" id="iOr-Tp-SnF"/>
                                 </constraints>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="adCell" rowHeight="65" id="ZJx-5V-OcK">
+                                <rect key="frame" x="0.0" y="282" width="414" height="65"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZJx-5V-OcK" id="vR3-fs-inF">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view tag="1000" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TOG-oi-n5Y">
+                                            <rect key="frame" x="34" y="10" width="345" height="44"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="TOG-oi-n5Y" secondAttribute="height" multiplier="345:44" id="U2s-JX-g4C"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="TOG-oi-n5Y" firstAttribute="centerY" secondItem="vR3-fs-inF" secondAttribute="centerY" id="Be5-yV-aRU"/>
+                                        <constraint firstItem="TOG-oi-n5Y" firstAttribute="centerX" secondItem="vR3-fs-inF" secondAttribute="centerX" id="Np1-Z6-0bj"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="ewH-I0-hvx" id="eRc-1o-xlC"/>
