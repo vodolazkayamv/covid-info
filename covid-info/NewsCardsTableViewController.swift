@@ -64,7 +64,13 @@ class NewsCardsTableViewController : UITableViewController {
         imageView.layer.cornerRadius = 10
         imageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         imageView.image = UIImage.init(named: "placeholder")
-        imageView.downloadImageFrom(link:  article.urlToImage, contentMode: .scaleAspectFill)
+        if article.urlToImage.contains("http") {
+            imageView.downloadImageFrom(link:  article.urlToImage, contentMode: .scaleAspectFill)
+        } else {
+            let urlString = "https" + article.urlToImage
+            imageView.downloadImageFrom(link: urlString, contentMode: .scaleAspectFill)
+
+        }
         
         
        return cell

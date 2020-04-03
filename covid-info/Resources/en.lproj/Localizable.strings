@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  covid-info
+
+  Created by Masha Vodolazkaya on 03/04/2020.
+  Copyright © 2020 Masha Vodolazkaya. All rights reserved.
+*/
+
+"cases" = "Cases";
+"deaths" = "Deaths";
+"critical" = "Critical";
+"recovered" = "Recovered";
+"active" = "Active";
+"today" = "Today";
