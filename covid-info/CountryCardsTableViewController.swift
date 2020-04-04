@@ -126,7 +126,7 @@ extension CountryCardsTableViewController: UISearchResultsUpdating {
     
     func filterContentForSearchText(_ searchText: String) {
         filteredCards = cards.filter { (card: JHUCountryInfo) -> Bool in
-            return card.country.lowercased().contains(searchText.lowercased())
+            return card.country.lowercased().starts(with: searchText.lowercased())
         }
         
         tableView.reloadData()
