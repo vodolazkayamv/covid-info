@@ -27,7 +27,7 @@ class NewsCardsTableViewController : UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        bannerView.adUnitID = "ca-app-pub-1185800084435080/8661257022"
+        bannerView.adUnitID = "ca-app-pub-1185800084435080/3022612687"
         bannerView.rootViewController = self
     }
     
@@ -40,40 +40,34 @@ class NewsCardsTableViewController : UITableViewController {
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        // Fetch a cell of the appropriate type.
 
-       let isAddCell = (indexPath.row % 5 == 1);
+       let isAddCell = (indexPath.row % 5 == 4);
        let cellIDStr = (isAddCell ? "adCell" : "newsCell");
        let cell = tableView.dequeueReusableCell(withIdentifier: cellIDStr, for: indexPath)
         if (isAddCell) {
             // Use adView
-            let adView : UIView = cell.viewWithTag(1000) as! UIView
+            let adView : UIView = cell.viewWithTag(1000)!
+            cell.backgroundColor = UIColor.systemBackground
+            adView.backgroundColor = UIColor.systemBackground
+
             bannerView.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(bannerView)
-            view.addConstraints(
-                [NSLayoutConstraint(item: bannerView,
-                                    attribute: .bottom,
-                                    relatedBy: .equal,
-                                    toItem: view.safeAreaLayoutGuide.bottomAnchor,
-                                    attribute: .top,
-                                    multiplier: 1,
-                                    constant: 0),
-                 NSLayoutConstraint(item: bannerView,
-                                    attribute: .centerX,
-                                    relatedBy: .equal,
-                                    toItem: view,
-                                    attribute: .centerX,
-                                    multiplier: 1,
-                                    constant: 0)
+            adView.addSubview(bannerView)
+            
+            NSLayoutConstraint.activate([
+                adView.centerXAnchor.constraint(equalTo: cell.centerXAnchor),
+                adView.topAnchor.constraint(equalTo: cell.topAnchor),
+                adView.bottomAnchor.constraint(equalTo: cell.bottomAnchor),
             ])
+            
             bannerView.load(GADRequest())
         } else {
-            let cardView : UIView = cell.viewWithTag(10) as! UIView
+            let cardView : UIView = cell.viewWithTag(10)!
             cardView.layer.cornerRadius = 10
             cardView.layer.shadowColor = UIColor.systemIndigo.cgColor
             cardView.layer.shadowOffset = CGSize(width: 1.5, height: 1.5)
             cardView.layer.shadowOpacity = 0.2
             cardView.layer.shadowRadius = 3.0
 
-            let article = articles[indexPath.row]
+            let article = articles[indexPath.row - indexPath.row / 5 ]
             let titleLabel = cell.viewWithTag(2) as! UILabel
             titleLabel.text = article.title
 

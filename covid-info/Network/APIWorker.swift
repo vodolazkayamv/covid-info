@@ -136,7 +136,7 @@ class APIWorker {
     
     //
     class func askNewsApi_Top() {
-            askAPIvia(urlString: "http://newsapi.org/v2/top-headlines?apiKey=8c8b05d0b0af4876a95cb405b5c4b874&country=ru&q=коронавирус".encodeUrl, completionHandler: { dataResponse in
+            askAPIvia(urlString: "https://newsapi.org/v2/top-headlines?apiKey=8c8b05d0b0af4876a95cb405b5c4b874&country=ru&q=коронавирус".encodeUrl, completionHandler: { dataResponse in
                 do{
     //                let jsonResponse = try JSONSerialization.jsonObject(with: dataResponse, options: []) as AnyObject
     //                print(jsonResponse) //Response result

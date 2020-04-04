@@ -18,12 +18,22 @@ class CountryCardsTableViewController : UITableViewController {
             }
         }
     }
+    var filteredCards: [JHUCountryInfo] = []
+
     
+    let searchController = UISearchController(searchResultsController: nil)
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "COVID-19 Daily Global Update by country"
+        
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Candies"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
         
     }
     
@@ -95,4 +105,22 @@ class CountryCardsTableViewController : UITableViewController {
     
     
     
+}
+
+extension CountryCardsTableViewController: UISearchResultsUpdating {
+    var isSearchBarEmpty: Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func filterContentForSearchText(_ searchText: String) {
+        filteredCards = cards.filter { (card: JHUCountryInfo) -> Bool in
+            return card.country.lowercased().contains(searchText.lowercased())
+        }
+        
+        tableView.reloadData()
+    }
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        filterContentForSearchText(searchBar.text!)
+    }
 }
