@@ -1,0 +1,87 @@
+
+/* Class = "UILabel"; text = "TODAY"; ObjectID = "1AK-gF-SC1"; */
+"1AK-gF-SC1.text" = "HOY";
+
+/* Class = "UILabel"; text = "COUNTRY Name"; ObjectID = "2ZW-ed-Cgd"; */
+"2ZW-ed-Cgd.text" = "COUNTRY Name";
+
+/* Class = "UILabel"; text = "CASES"; ObjectID = "42M-wj-04J"; */
+"42M-wj-04J.text" = "CASOS";
+
+/* Class = "UILabel"; text = "VALUE"; ObjectID = "C0e-b2-ZAf"; */
+"C0e-b2-ZAf.text" = "VALUE";
+
+/* Class = "UILabel"; text = "RECOVERED"; ObjectID = "GwK-fm-6i5"; */
+"GwK-fm-6i5.text" = "CURADO";
+
+/* Class = "UILabel"; text = "ACTIVE"; ObjectID = "KCn-4m-6Pa"; */
+"KCn-4m-6Pa.text" = "ENFERMO";
+
+/* Class = "UILabel"; text = "VALUE"; ObjectID = "MyY-Su-8gn"; */
+"MyY-Su-8gn.text" = "VALUE";
+
+/* Class = "UILabel"; text = "TODAY"; ObjectID = "NLC-rd-4W3"; */
+"NLC-rd-4W3.text" = "HOY";
+
+/* Class = "UILabel"; text = "Article Title"; ObjectID = "OTn-cj-eSo"; */
+"OTn-cj-eSo.text" = "Article Title";
+
+/* Class = "UILabel"; text = "Label lknbgvyt jhbgig "; ObjectID = "OjK-R0-No8"; */
+"OjK-R0-No8.text" = "Label lknbgvyt jhbgig ";
+
+/* Class = "UITableViewController"; title = "CardsTableVC TITLE"; ObjectID = "OyM-3j-yQu"; */
+"OyM-3j-yQu.title" = "CardsTableVC TITLE";
+
+/* Class = "UILabel"; text = "VALUE"; ObjectID = "Skb-gN-DxQ"; */
+"Skb-gN-DxQ.text" = "VALUE";
+
+/* Class = "UILabel"; text = "ALL"; ObjectID = "VuP-JT-Ne0"; */
+"VuP-JT-Ne0.text" = "TODAS";
+
+/* Class = "UILabel"; text = "VALUE"; ObjectID = "Z5C-vf-HDL"; */
+"Z5C-vf-HDL.text" = "VALUE";
+
+/* Class = "UITableViewController"; title = "CardsTableVC TITLE"; ObjectID = "ewH-I0-hvx"; */
+"ewH-I0-hvx.title" = "CardsTableVC TITLE";
+
+/* Class = "UIPageViewController"; title = "76887"; ObjectID = "f1J-3b-msu"; */
+"f1J-3b-msu.title" = "76887";
+
+/* Class = "UILabel"; text = "updated time "; ObjectID = "gd1-8J-aKJ"; */
+"gd1-8J-aKJ.text" = "updated time ";
+
+/* Class = "UILabel"; text = "CRITICAL"; ObjectID = "h62-A1-aqc"; */
+"h62-A1-aqc.text" = "CRÍTICO";
+
+/* Class = "UILabel"; text = "published date"; ObjectID = "itB-la-3tu"; */
+"itB-la-3tu.text" = "published date";
+
+/* Class = "UILabel"; text = "VALUE"; ObjectID = "kMf-7S-ACI"; */
+"kMf-7S-ACI.text" = "VALUE";
+
+/* Class = "UILabel"; text = "VALUE"; ObjectID = "lKt-fy-IDt"; */
+"lKt-fy-IDt.text" = "VALUE";
+
+/* Class = "UILabel"; text = "VALUE"; ObjectID = "lSo-4p-tGz"; */
+"lSo-4p-tGz.text" = "VALUE";
+
+/* Class = "UILabel"; text = "VALUE"; ObjectID = "n4s-Rd-MBL"; */
+"n4s-Rd-MBL.text" = "VALUE";
+
+/* Class = "UILabel"; text = "Description "; ObjectID = "oJD-IC-eJE"; */
+"oJD-IC-eJE.text" = "Description ";
+
+/* Class = "UILabel"; text = "VALUE"; ObjectID = "qaI-2r-fqe"; */
+"qaI-2r-fqe.text" = "VALUE";
+
+/* Class = "UILabel"; text = "ALL"; ObjectID = "tq4-7t-lns"; */
+"tq4-7t-lns.text" = "TODAS";
+
+/* Class = "UILabel"; text = "DEVIATION"; ObjectID = "vMP-oa-jaS"; */
+"vMP-oa-jaS.text" = "DESVIACIÓN";
+
+/* Class = "UILabel"; text = "DEATHS"; ObjectID = "vw6-de-rXB"; */
+"vw6-de-rXB.text" = "MUERTO";
+
+/* Class = "UILabel"; text = "DEVIATION"; ObjectID = "yKZ-d9-t0j"; */
+"yKZ-d9-t0j.text" = "DESVIACIÓN";

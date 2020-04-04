@@ -39,8 +39,8 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
         APIWorker.askNewsApi_Health()
         APIWorker.askNewsApi_Top()
         
-        self.newsVC_Health.title = "Новости здравоохранения"
-        self.newsVC_Top.title = "Главные новости"
+        self.newsVC_Health.title = NSLocalizedString("Health Control news", comment: "Новости здравоохранения")
+        self.newsVC_Top.title = NSLocalizedString("Breaking News", comment: "Главные новости")
         
         NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveCountryData(_:)), name: .didReceiveCountryData, object: APIWorker.self)
         NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveNewsHealthData(_:)), name: .didReceiveNewsHealthData, object: APIWorker.self)
