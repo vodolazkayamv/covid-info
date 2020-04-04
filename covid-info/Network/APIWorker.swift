@@ -113,7 +113,17 @@ class APIWorker {
     
     
     class func askNewsApi_Health() {
-        askAPIvia(urlString: "https://newsapi.org/v2/top-headlines?apiKey=8c8b05d0b0af4876a95cb405b5c4b874&country=ru&category=health&q=коронавирус".encodeUrl, completionHandler: { dataResponse in
+        let locale = Locale.current
+        let currentRegion = locale.regionCode?.lowercased() ?? ""
+        let urlStringPart1 = "https://newsapi.org/v2/top-headlines?apiKey=8c8b05d0b0af4876a95cb405b5c4b874&country="
+        let urlStringPart2 = "&category=health&q="
+        var query = "COVID"
+        if (currentRegion == "ru") {
+            query = "коронавирус"
+        }
+        
+        
+        askAPIvia(urlString: (urlStringPart1+currentRegion+urlStringPart2+query).encodeUrl, completionHandler: { dataResponse in
             do{
 //                let jsonResponse = try JSONSerialization.jsonObject(with: dataResponse, options: []) as AnyObject
 //                print(jsonResponse) //Response result
@@ -123,7 +133,7 @@ class APIWorker {
                 decoder.dateDecodingStrategy = .iso8601
                 let newsResponse : NewsApiResponse = try decoder.decode(NewsApiResponse.self, from: dataResponse)
                 
-                print(newsResponse.articles.count, newsResponse.totalResults)
+//                print(newsResponse.articles.count, newsResponse.totalResults)
                 let dataDict:[String: NewsApiResponse] = ["result": newsResponse]
                 NotificationCenter.default.post(name: .didReceiveNewsHealthData, object: self, userInfo: dataDict)
             
@@ -134,9 +144,18 @@ class APIWorker {
         })
     }
     
-    //
-    class func askNewsApi_Top() {
-            askAPIvia(urlString: "https://newsapi.org/v2/top-headlines?apiKey=8c8b05d0b0af4876a95cb405b5c4b874&country=ru&q=коронавирус".encodeUrl, completionHandler: { dataResponse in
+    class func askNewsApi_Business() {
+            let locale = Locale.current
+            let currentRegion = locale.regionCode?.lowercased() ?? ""
+            let urlStringPart1 = "https://newsapi.org/v2/top-headlines?apiKey=8c8b05d0b0af4876a95cb405b5c4b874&country="
+            let urlStringPart2 = "&category=business&q="
+            var query = "COVID"
+            if (currentRegion == "ru") {
+                query = "коронавирус"
+            }
+            
+            
+            askAPIvia(urlString: (urlStringPart1+currentRegion+urlStringPart2+query).encodeUrl, completionHandler: { dataResponse in
                 do{
     //                let jsonResponse = try JSONSerialization.jsonObject(with: dataResponse, options: []) as AnyObject
     //                print(jsonResponse) //Response result
@@ -146,7 +165,40 @@ class APIWorker {
                     decoder.dateDecodingStrategy = .iso8601
                     let newsResponse : NewsApiResponse = try decoder.decode(NewsApiResponse.self, from: dataResponse)
                     
-                    print(newsResponse.articles.count, newsResponse.totalResults)
+    //                print(newsResponse.articles.count, newsResponse.totalResults)
+                    let dataDict:[String: NewsApiResponse] = ["result": newsResponse]
+                    NotificationCenter.default.post(name: .didReceiveBusinessData, object: self, userInfo: dataDict)
+                
+                } catch let parsingError {
+                    print("Error", parsingError)
+                }
+                
+            })
+        }
+    
+    //
+    class func askNewsApi_Top() {
+        
+        let locale = Locale.current
+        let currentRegion = locale.regionCode?.lowercased() ?? ""
+        let urlStringPart1 = "https://newsapi.org/v2/top-headlines?apiKey=8c8b05d0b0af4876a95cb405b5c4b874&country="
+        let urlStringPart2 = "&q="
+        var query = "COVID"
+        if (currentRegion == "ru") {
+            query = "коронавирус"
+        }
+        
+            askAPIvia(urlString: (urlStringPart1+currentRegion+urlStringPart2+query).encodeUrl, completionHandler: { dataResponse in
+                do{
+    //                let jsonResponse = try JSONSerialization.jsonObject(with: dataResponse, options: []) as AnyObject
+    //                print(jsonResponse) //Response result
+                    
+                    let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    decoder.dateDecodingStrategy = .iso8601
+                    let newsResponse : NewsApiResponse = try decoder.decode(NewsApiResponse.self, from: dataResponse)
+                    
+//                    print(newsResponse.articles.count, newsResponse.totalResults)
                     let dataDict:[String: NewsApiResponse] = ["result": newsResponse]
                     NotificationCenter.default.post(name: .didReceiveNewsTopData, object: self, userInfo: dataDict)
                 

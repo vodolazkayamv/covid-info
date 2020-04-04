@@ -18,6 +18,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
     let countriesVC : CountryCardsTableViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CardsTableVC") as! CountryCardsTableViewController
     let newsVC_Health : NewsCardsTableViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewsTableVC") as! NewsCardsTableViewController
     let newsVC_Top : NewsCardsTableViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewsTableVC") as! NewsCardsTableViewController
+    let newsVC_Business : NewsCardsTableViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewsTableVC") as! NewsCardsTableViewController
     
     override func viewWillAppear(_ animated: Bool) {
         self.containerStackView.addArrangedSubview(pageVC.view)
@@ -37,7 +38,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
 
         APIWorker.askCOVIDStatisticsAll()
         APIWorker.askNewsApi_Health()
-        APIWorker.askNewsApi_Top()
+        
         
         self.newsVC_Health.title = NSLocalizedString("Health Control news", comment: "Новости здравоохранения")
         self.newsVC_Top.title = NSLocalizedString("Breaking News", comment: "Главные новости")
@@ -45,6 +46,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
         NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveCountryData(_:)), name: .didReceiveCountryData, object: APIWorker.self)
         NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveNewsHealthData(_:)), name: .didReceiveNewsHealthData, object: APIWorker.self)
         NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveNewsTopData(_:)), name: .didReceiveNewsTopData, object: APIWorker.self)
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveNewsBusinessData(_:)), name: .didReceiveBusinessData, object: APIWorker.self)
         
     }
     
@@ -53,7 +55,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
     
     fileprivate lazy var pages: [UIViewController] = {
         return [
-            self.countriesVC, self.newsVC_Health, self.newsVC_Top
+            self.countriesVC, self.newsVC_Health, self.newsVC_Top, self.newsVC_Business
         ]
     }()
     fileprivate func getViewController(withIdentifier identifier: String) -> UIViewController
@@ -112,6 +114,13 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if (!completed) { return }
         self.titleLabel.text = pageViewController.viewControllers!.first!.title
+        
+        if (self.presentationIndex(for: pageVC) == 1) {
+            APIWorker.askNewsApi_Top()
+        }
+        if (self.presentationIndex(for: pageVC) == 2) {
+            APIWorker.askNewsApi_Business()
+        }
     }
     
     
@@ -134,6 +143,17 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
             for (_, data) in dataReceived
             {
                 self.newsVC_Top.articles = data.articles
+            }
+        }
+    }
+    
+    @objc func onDidReceiveNewsBusinessData(_ notification: Notification)
+    {
+        if let dataReceived = notification.userInfo as? [String: NewsApiResponse]
+        {
+            for (_, data) in dataReceived
+            {
+                self.newsVC_Business.articles = data.articles
             }
         }
     }

@@ -14,6 +14,8 @@ extension Notification.Name {
     static let didReceiveNativeCountryData = Notification.Name("didReceiveNativeCountryData")
     static let didReceiveCountryData = Notification.Name("didReceiveCountryData")
     static let didReceiveNewsData = Notification.Name("didReceiveNewsData")
+    static let didReceiveBusinessData = Notification.Name("didReceiveBusinessData")
+
 
     static let didReceiveNewsHealthData = Notification.Name("didReceiveNewsHealthData")
     static let didReceiveNewsTopData = Notification.Name("didReceiveNewsTopData")

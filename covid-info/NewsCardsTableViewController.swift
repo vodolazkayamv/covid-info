@@ -17,7 +17,6 @@ class NewsCardsTableViewController : UITableViewController {
 
     var articles : [NewsArticle] = [] {
         didSet {
-            print(articles.count)
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
