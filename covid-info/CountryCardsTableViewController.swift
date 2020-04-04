@@ -33,7 +33,7 @@ class CountryCardsTableViewController : UITableViewController {
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Countries"
+        searchController.searchBar.placeholder = NSLocalizedString("Search Countries", comment: "Search Countries")
         navigationItem.searchController = searchController
         definesPresentationContext = true
         
