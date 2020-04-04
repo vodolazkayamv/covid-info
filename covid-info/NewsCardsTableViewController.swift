@@ -45,8 +45,6 @@ class NewsCardsTableViewController : UITableViewController {
         if (isAddCell) {
             // Use adView
             let adView : UIView = cell.viewWithTag(1000)!
-            cell.backgroundColor = UIColor.systemBackground
-            adView.backgroundColor = UIColor.systemBackground
 
             bannerView.translatesAutoresizingMaskIntoConstraints = false
             adView.addSubview(bannerView)

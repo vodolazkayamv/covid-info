@@ -69,6 +69,8 @@
 		79C84E01E8498E0D0FDCC8B6 /* Pods-covid-info.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-covid-info.release.xcconfig"; path = "Target Support Files/Pods-covid-info/Pods-covid-info.release.xcconfig"; sourceTree = "<group>"; };
 		88A8085BC671F87B09F089B3 /* Pods_covid_info_covid_infoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_covid_info_covid_infoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93582C92BCAD91E28BC52037 /* Pods_covid_info.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_covid_info.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C27A1212438AA2400BB82F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		9C27A1222438ADE500BB82F0 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		9C95A8992437560900D19FF0 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		9C95A8AC24375AED00D19FF0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9C95A8AE24375AF100D19FF0 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -95,8 +97,6 @@
 		9CDE223C2433BEC000A3505A /* APIWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIWorker.swift; sourceTree = "<group>"; };
 		9CDE223D2433BEC000A3505A /* DTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTO.swift; sourceTree = "<group>"; };
 		9CDE223E2433BEC000A3505A /* XMLParserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLParserManager.swift; sourceTree = "<group>"; };
-		9CDE22532434C06700A3505A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
-		9CDE22542434C06D00A3505A /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ru; path = ru.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DAFE0E2000CF0BEAFD0EB0F5 /* Pods_covid_infoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_covid_infoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -550,12 +550,12 @@
 			isa = PBXVariantGroup;
 			children = (
 				9CDE22062433BB9400A3505A /* Base */,
-				9CDE22532434C06700A3505A /* en */,
-				9CDE22542434C06D00A3505A /* ru */,
 				1BEC7F94243885FD005254A2 /* es */,
 				1BEC7F972438860A005254A2 /* de */,
 				1BEC7F9A24388615005254A2 /* fr */,
 				1BEC7F9D24388B46005254A2 /* it */,
+				9C27A1212438AA2400BB82F0 /* en */,
+				9C27A1222438ADE500BB82F0 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

@@ -32,7 +32,7 @@ class CountryCardsTableViewController : UITableViewController {
         self.title = "COVID-19 Daily Global Update by country"
         
         searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
+//        searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Countries"
         navigationItem.searchController = searchController
         definesPresentationContext = true

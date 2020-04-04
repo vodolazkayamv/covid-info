@@ -39,7 +39,6 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
         APIWorker.askCOVIDStatisticsAll()
         APIWorker.askNewsApi_Health()
         
-        
         self.newsVC_Health.title = NSLocalizedString("Health Control news", comment: "Новости здравоохранения")
         self.newsVC_Top.title = NSLocalizedString("Breaking News", comment: "Главные новости")
         

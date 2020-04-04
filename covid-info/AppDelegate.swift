@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        let pageControl = UIPageControl.appearance();
         pageControl.currentPageIndicatorTintColor = UIColor.red
         pageControl.pageIndicatorTintColor = UIColor.gray;
-        pageControl.backgroundColor = UIColor(white: 0.85, alpha: 0.85)
+        pageControl.backgroundColor = UIColor.systemBackground
 
         return true
     }
