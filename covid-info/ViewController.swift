@@ -15,7 +15,6 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
     @IBOutlet weak var containerStackView: UIStackView!
     
     let pageVC : UIPageViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PageVC") as! UIPageViewController
-    
     let countriesVC : CountryCardsTableViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CardsTableVC") as! CountryCardsTableViewController
     let newsVC_Health : NewsCardsTableViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewsTableVC") as! NewsCardsTableViewController
     let newsVC_Top : NewsCardsTableViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewsTableVC") as! NewsCardsTableViewController
