@@ -101,14 +101,22 @@ class CountryCardsTableViewController : UITableViewController {
         let casesTodayLabel : UILabel = cell.viewWithTag(322) as! UILabel
         casesTodayLabel.text = "\(country.statisticsToday.todayCases)"
         let casesDevLabel : UILabel = cell.viewWithTag(332) as! UILabel
-        casesDevLabel.text = "\(country.casesDeviation)"
+        let deviationStringCases = (country.casesDeviation > 0
+            ? "▲" + "\(country.casesDeviation)"
+            : "▼" + "\(country.casesDeviation * (-1))")
+        casesDevLabel.text = deviationStringCases
+        casesDevLabel.textColor = country.casesDeviation > 0 ? UIColor.systemGreen : UIColor.systemRed
         
         let deathsAllLabel : UILabel = cell.viewWithTag(412) as! UILabel
         deathsAllLabel.text = "\(country.statisticsToday.deaths)"
         let deathsTodayLabel : UILabel = cell.viewWithTag(422) as! UILabel
         deathsTodayLabel.text = "\(country.statisticsToday.todayDeaths)"
         let deathsDevLabel : UILabel = cell.viewWithTag(432) as! UILabel
-        deathsDevLabel.text = "\(country.deathDeviation)"
+        let deviationStringDeath = (country.deathDeviation > 0
+            ? "▲" + "\(country.deathDeviation)"
+            : "▼" + "\(country.deathDeviation * (-1))")
+        deathsDevLabel.text = deviationStringDeath
+        deathsDevLabel.textColor = country.deathDeviation > 0 ? UIColor.systemGreen : UIColor.systemRed
         
 
 
