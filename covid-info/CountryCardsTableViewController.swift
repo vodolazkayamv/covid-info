@@ -32,8 +32,8 @@ class CountryCardsTableViewController : UITableViewController {
         self.title = "COVID-19 Daily Global Update by country"
         
         searchController.searchResultsUpdater = self
-//        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Countries"
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = NSLocalizedString("Search Countries", comment: "Search Countries")
         navigationItem.searchController = searchController
         definesPresentationContext = true
         
@@ -126,7 +126,7 @@ extension CountryCardsTableViewController: UISearchResultsUpdating {
     
     func filterContentForSearchText(_ searchText: String) {
         filteredCards = cards.filter { (card: JHUCountryInfo) -> Bool in
-            return card.country.lowercased().contains(searchText.lowercased())
+            return card.country.lowercased().starts(with: searchText.lowercased())
         }
         
         tableView.reloadData()
