@@ -49,6 +49,8 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
     }
     
     
+    // MARK: - Page Control
+    
     fileprivate lazy var pages: [UIViewController] = {
         return [
             self.countriesVC, self.newsVC_Health, self.newsVC_Top
@@ -113,6 +115,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
     }
     
     
+    //MARK: - Notifications
     @objc func onDidReceiveNewsHealthData(_ notification: Notification)
     {
         if let dataReceived = notification.userInfo as? [String: NewsApiResponse]

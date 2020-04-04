@@ -19,7 +19,9 @@ class CountryCardsTableViewController : UITableViewController {
         }
     }
     var filteredCards: [JHUCountryInfo] = []
-
+    var isFiltering: Bool {
+      return searchController.isActive && !isSearchBarEmpty
+    }
     
     let searchController = UISearchController(searchResultsController: nil)
 
@@ -31,13 +33,18 @@ class CountryCardsTableViewController : UITableViewController {
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Candies"
+        searchController.searchBar.placeholder = "Search Countries"
         navigationItem.searchController = searchController
         definesPresentationContext = true
+        
+        tableView.tableHeaderView = searchController.searchBar
         
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFiltering {
+          return filteredCards.count
+        }
         return cards.count
     }
     
@@ -49,13 +56,18 @@ class CountryCardsTableViewController : UITableViewController {
         cardView.layer.cornerRadius = 10
         cardView.dropShadow()
         
-        
+        let country: JHUCountryInfo
+        if isFiltering {
+          country = filteredCards[indexPath.row]
+        } else {
+          country = cards[indexPath.row]
+        }
        // Configure the cell’s contents.
         let titleLabel : UILabel = cell.viewWithTag(11) as! UILabel
-        titleLabel.text = cards[indexPath.row].country
+        titleLabel.text = country.country
         
         let updatedLabel : UILabel = cell.viewWithTag(12) as! UILabel
-        if let update : Date = cards[indexPath.row].updated {
+        if let update : Date = country.updated {
             let formatter = DateFormatter()
             formatter.dateStyle = .long
             formatter.timeStyle = .medium
@@ -64,7 +76,7 @@ class CountryCardsTableViewController : UITableViewController {
             updatedLabel.text = upstring
         }
         
-        if let countryCode = cards[indexPath.row].statisticsToday.countryInfo.iso2?.lowercased() {
+        if let countryCode = country.statisticsToday.countryInfo.iso2?.lowercased() {
             let flagImage : UIImage = UIImage(named: countryCode) ?? UIImage()
             let flagImageView : UIImageView = cell.viewWithTag(13) as! UIImageView
             flagImageView.image = flagImage
@@ -74,29 +86,29 @@ class CountryCardsTableViewController : UITableViewController {
             
             flagImageView.contentMode = .scaleAspectFit
         } else {
-            Logger.warning("country missing iso2 code: \(cards[indexPath.row].country)")
+            Logger.warning("country missing iso2 code: \(country.country)")
         }
         
         let activeLabel : UILabel = cell.viewWithTag(212) as! UILabel
-        activeLabel.text = "\(cards[indexPath.row].statisticsToday.active)"
+        activeLabel.text = "\(country.statisticsToday.active)"
         let criticalLabel : UILabel = cell.viewWithTag(222) as! UILabel
-        criticalLabel.text = "\(cards[indexPath.row].statisticsToday.critical)"
+        criticalLabel.text = "\(country.statisticsToday.critical)"
         let recoveredLabel : UILabel = cell.viewWithTag(232) as! UILabel
-        recoveredLabel.text = "\(cards[indexPath.row].statisticsToday.recovered)"
+        recoveredLabel.text = "\(country.statisticsToday.recovered)"
         
         let casesAllLabel : UILabel = cell.viewWithTag(312) as! UILabel
-        casesAllLabel.text = "\(cards[indexPath.row].statisticsToday.cases)"
+        casesAllLabel.text = "\(country.statisticsToday.cases)"
         let casesTodayLabel : UILabel = cell.viewWithTag(322) as! UILabel
-        casesTodayLabel.text = "\(cards[indexPath.row].statisticsToday.todayCases)"
+        casesTodayLabel.text = "\(country.statisticsToday.todayCases)"
         let casesDevLabel : UILabel = cell.viewWithTag(332) as! UILabel
-        casesDevLabel.text = "\(cards[indexPath.row].casesDeviation)"
+        casesDevLabel.text = "\(country.casesDeviation)"
         
         let deathsAllLabel : UILabel = cell.viewWithTag(412) as! UILabel
-        deathsAllLabel.text = "\(cards[indexPath.row].statisticsToday.deaths)"
+        deathsAllLabel.text = "\(country.statisticsToday.deaths)"
         let deathsTodayLabel : UILabel = cell.viewWithTag(422) as! UILabel
-        deathsTodayLabel.text = "\(cards[indexPath.row].statisticsToday.todayDeaths)"
+        deathsTodayLabel.text = "\(country.statisticsToday.todayDeaths)"
         let deathsDevLabel : UILabel = cell.viewWithTag(432) as! UILabel
-        deathsDevLabel.text = "\(cards[indexPath.row].deathDeviation)"
+        deathsDevLabel.text = "\(country.deathDeviation)"
         
 
 
