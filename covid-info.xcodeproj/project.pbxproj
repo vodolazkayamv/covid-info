@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -53,6 +53,18 @@
 		132A29D7DA7E5BDB23A3A7D2 /* Pods-covid-info.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-covid-info.debug.xcconfig"; path = "Target Support Files/Pods-covid-info/Pods-covid-info.debug.xcconfig"; sourceTree = "<group>"; };
 		13EF60229AAB8264475CB629 /* Pods-covid-infoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-covid-infoTests.debug.xcconfig"; path = "Target Support Files/Pods-covid-infoTests/Pods-covid-infoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		13F6E46E5A7141A4B5ACE64A /* Pods-covid-info-covid-infoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-covid-info-covid-infoUITests.release.xcconfig"; path = "Target Support Files/Pods-covid-info-covid-infoUITests/Pods-covid-info-covid-infoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1BEC7F94243885FD005254A2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		1BEC7F95243885FD005254A2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		1BEC7F96243885FD005254A2 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1BEC7F972438860A005254A2 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		1BEC7F982438860A005254A2 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		1BEC7F992438860B005254A2 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1BEC7F9A24388615005254A2 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		1BEC7F9B24388615005254A2 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		1BEC7F9C24388615005254A2 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1BEC7F9D24388B46005254A2 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Main.strings; sourceTree = "<group>"; };
+		1BEC7F9E24388B47005254A2 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		1BEC7F9F24388B47005254A2 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		71C8BF06F2CDCDE026844574 /* Pods-covid-info-covid-infoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-covid-info-covid-infoUITests.debug.xcconfig"; path = "Target Support Files/Pods-covid-info-covid-infoUITests/Pods-covid-info-covid-infoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		79C84E01E8498E0D0FDCC8B6 /* Pods-covid-info.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-covid-info.release.xcconfig"; path = "Target Support Files/Pods-covid-info/Pods-covid-info.release.xcconfig"; sourceTree = "<group>"; };
 		88A8085BC671F87B09F089B3 /* Pods_covid_info_covid_infoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_covid_info_covid_infoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,7 +138,6 @@
 				13EF60229AAB8264475CB629 /* Pods-covid-infoTests.debug.xcconfig */,
 				07A4A188EF39452F7B90B4A5 /* Pods-covid-infoTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -321,6 +332,10 @@
 				en,
 				Base,
 				ru,
+				es,
+				de,
+				fr,
+				it,
 			);
 			mainGroup = 9CDE21F32433BB9400A3505A;
 			productRefGroup = 9CDE21FD2433BB9400A3505A /* Products */;
@@ -523,6 +538,10 @@
 			children = (
 				9C95A8AC24375AED00D19FF0 /* en */,
 				9C95A8AE24375AF100D19FF0 /* ru */,
+				1BEC7F96243885FD005254A2 /* es */,
+				1BEC7F992438860B005254A2 /* de */,
+				1BEC7F9C24388615005254A2 /* fr */,
+				1BEC7F9F24388B47005254A2 /* it */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -533,6 +552,10 @@
 				9CDE22062433BB9400A3505A /* Base */,
 				9CDE22532434C06700A3505A /* en */,
 				9CDE22542434C06D00A3505A /* ru */,
+				1BEC7F94243885FD005254A2 /* es */,
+				1BEC7F972438860A005254A2 /* de */,
+				1BEC7F9A24388615005254A2 /* fr */,
+				1BEC7F9D24388B46005254A2 /* it */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -541,6 +564,10 @@
 			isa = PBXVariantGroup;
 			children = (
 				9CDE220E2433BB9700A3505A /* Base */,
+				1BEC7F95243885FD005254A2 /* es */,
+				1BEC7F982438860A005254A2 /* de */,
+				1BEC7F9B24388615005254A2 /* fr */,
+				1BEC7F9E24388B47005254A2 /* it */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
