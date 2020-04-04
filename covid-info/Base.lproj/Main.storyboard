@@ -94,7 +94,7 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xgf-3D-jg0">
                                                                     <rect key="frame" x="114.5" y="0.0" width="115" height="32"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="221" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CRITICAL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h62-A1-aqc">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" tag="221" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CRITICAL" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h62-A1-aqc">
                                                                             <rect key="frame" x="35.5" y="0.0" width="44" height="16"/>
                                                                             <fontDescription key="fontDescription" type="system" weight="thin" pointSize="10"/>
                                                                             <nil key="textColor"/>

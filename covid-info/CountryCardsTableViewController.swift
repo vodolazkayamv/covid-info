@@ -43,7 +43,7 @@ class CountryCardsTableViewController : UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering {
-          return filteredCards.count
+            return filteredCards.count
         }
         return cards.count
     }
