@@ -27,6 +27,7 @@
 		9CDE223F2433BEC000A3505A /* APIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDE223C2433BEC000A3505A /* APIWorker.swift */; };
 		9CDE22402433BEC000A3505A /* DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDE223D2433BEC000A3505A /* DTO.swift */; };
 		9CDE22412433BEC000A3505A /* XMLParserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDE223E2433BEC000A3505A /* XMLParserManager.swift */; };
+		9CF2B006243C913A00CC0B2F /* AggregatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2B005243C913A00CC0B2F /* AggregatorViewController.m */; };
 		A58E84ACF9716B9AA33C3F38 /* Pods_covid_infoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFE0E2000CF0BEAFD0EB0F5 /* Pods_covid_infoTests.framework */; };
 		E2BAB2A9422987AF3332871F /* Pods_covid_info.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93582C92BCAD91E28BC52037 /* Pods_covid_info.framework */; };
 /* End PBXBuildFile section */
@@ -97,6 +98,9 @@
 		9CDE223C2433BEC000A3505A /* APIWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIWorker.swift; sourceTree = "<group>"; };
 		9CDE223D2433BEC000A3505A /* DTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTO.swift; sourceTree = "<group>"; };
 		9CDE223E2433BEC000A3505A /* XMLParserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLParserManager.swift; sourceTree = "<group>"; };
+		9CF2B003243C913A00CC0B2F /* covid-info-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "covid-info-Bridging-Header.h"; sourceTree = "<group>"; };
+		9CF2B004243C913A00CC0B2F /* AggregatorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AggregatorViewController.h; sourceTree = "<group>"; };
+		9CF2B005243C913A00CC0B2F /* AggregatorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AggregatorViewController.m; sourceTree = "<group>"; };
 		DAFE0E2000CF0BEAFD0EB0F5 /* Pods_covid_infoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_covid_infoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -176,7 +180,9 @@
 			isa = PBXGroup;
 			children = (
 				9CDE22102433BB9700A3505A /* Info.plist */,
+				9CF2B003243C913A00CC0B2F /* covid-info-Bridging-Header.h */,
 				9CDE21FF2433BB9400A3505A /* AppDelegate.swift */,
+				9CF2B008243C915500CC0B2F /* New Group */,
 				9CDE22012433BB9400A3505A /* SceneDelegate.swift */,
 				9CDE22032433BB9400A3505A /* ViewController.swift */,
 				9CDE22052433BB9400A3505A /* Main.storyboard */,
@@ -228,6 +234,15 @@
 				9CDE223E2433BEC000A3505A /* XMLParserManager.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		9CF2B008243C915500CC0B2F /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				9CF2B004243C913A00CC0B2F /* AggregatorViewController.h */,
+				9CF2B005243C913A00CC0B2F /* AggregatorViewController.m */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		DBF7386E886AB6699DBA81BA /* Frameworks */ = {
@@ -313,6 +328,7 @@
 				TargetAttributes = {
 					9CDE21FB2433BB9400A3505A = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1140;
 					};
 					9CDE22142433BB9700A3505A = {
 						CreatedOnToolsVersion = 11.3.1;
@@ -492,6 +508,7 @@
 				9CDE223F2433BEC000A3505A /* APIWorker.swift in Sources */,
 				9CDE22332433BE0D00A3505A /* CountryCardsTableViewController.swift in Sources */,
 				9C9D4FDD2434E2C700B1C9EC /* NewsCardsTableViewController.swift in Sources */,
+				9CF2B006243C913A00CC0B2F /* AggregatorViewController.m in Sources */,
 				9CDE22022433BB9400A3505A /* SceneDelegate.swift in Sources */,
 				9CDE220A2433BB9400A3505A /* covid_info.xcdatamodeld in Sources */,
 				9CDE22392433BEB800A3505A /* ColorExtensions.swift in Sources */,
@@ -694,6 +711,7 @@
 			baseConfigurationReference = 132A29D7DA7E5BDB23A3A7D2 /* Pods-covid-info.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UKBNTL7HA9;
 				INFOPLIST_FILE = "covid-info/Info.plist";
@@ -703,6 +721,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "geomatix.cz.covid-info";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "covid-info/covid-info-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -713,6 +733,7 @@
 			baseConfigurationReference = 79C84E01E8498E0D0FDCC8B6 /* Pods-covid-info.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UKBNTL7HA9;
 				INFOPLIST_FILE = "covid-info/Info.plist";
@@ -722,6 +743,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "geomatix.cz.covid-info";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "covid-info/covid-info-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
