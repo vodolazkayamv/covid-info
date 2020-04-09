@@ -6,12 +6,18 @@
   Copyright © 2020 Masha Vodolazkaya. All rights reserved.
 */
 
-"cases" = "Cases";
+"cases" = "Fälle";
 "deaths" = "Deaths";
 "critical" = "Critical";
 "recovered" = "Recovered";
 "active" = "Active";
 "today" = "Today";
+
+"Cases history" = "Fälle Geschichte";
+"Cases" = "Fälle";
+"Deaths" = "Todesfälle";
+"all time" = "alle Zeit";
+
 
 "Health Control news" = "Gesundheitsnachrichten";
 "Breaking News" =  "Aktuelle Nachrichten";

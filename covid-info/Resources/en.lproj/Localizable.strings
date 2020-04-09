@@ -8,6 +8,10 @@
 
 "cases" = "Cases";
 "deaths" = "Deaths";
+"Cases history" = "Cases history";
+"Cases" = "Cases";
+"Deaths" = "Deaths";
+"all time" = "all time";
 "critical" = "Critical";
 "recovered" = "Recovered";
 "active" = "Active";

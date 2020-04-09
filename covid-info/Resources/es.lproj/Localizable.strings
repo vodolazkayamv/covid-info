@@ -12,6 +12,10 @@
 "recovered" = "Recovered";
 "active" = "Active";
 "today" = "Today";
+"Cases history" = "Historia de casos";
+"Cases" = "Casos";
+"Deaths" = "Muertes";
+"all time" = "Todo el tiempo";
 
 "Health Control news" = "Noticias de Salud";
 "Breaking News" =  "Noticias de última hora";
