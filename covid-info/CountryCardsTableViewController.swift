@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SPStorkController
 
 class CountryCardsTableViewController : UITableViewController {
     
@@ -123,7 +124,18 @@ class CountryCardsTableViewController : UITableViewController {
        return cell
     }
     
-    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let country: JHUCountryInfo
+        if isFiltering {
+          country = filteredCards[indexPath.row]
+        } else {
+          country = cards[indexPath.row]
+        }
+        
+        let controller = CountryDetailViewController()
+        controller.country = country
+        self.presentAsStork(controller,height: 350)
+    }
     
 }
 

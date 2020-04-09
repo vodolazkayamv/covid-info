@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -28,6 +28,25 @@
 		9CDE22402433BEC000A3505A /* DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDE223D2433BEC000A3505A /* DTO.swift */; };
 		9CDE22412433BEC000A3505A /* XMLParserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDE223E2433BEC000A3505A /* XMLParserManager.swift */; };
 		9CF2B006243C913A00CC0B2F /* AggregatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2B005243C913A00CC0B2F /* AggregatorViewController.m */; };
+		9CF2B00F243DED0200CC0B2F /* SPStorkController in Frameworks */ = {isa = PBXBuildFile; productRef = 9CF2B00E243DED0200CC0B2F /* SPStorkController */; };
+		9CF2B011243DEDB800CC0B2F /* CountryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2B010243DEDB800CC0B2F /* CountryDetailViewController.swift */; };
+		9CF2B013243DEF5500CC0B2F /* ScrollableStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2B012243DEF5500CC0B2F /* ScrollableStackView.swift */; };
+		9CF2B02B243DF49F00CC0B2F /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2B019243DF49F00CC0B2F /* BarChartView.swift */; };
+		9CF2B02C243DF49F00CC0B2F /* BarChartRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2B01A243DF49F00CC0B2F /* BarChartRow.swift */; };
+		9CF2B02D243DF49F00CC0B2F /* LabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2B01B243DF49F00CC0B2F /* LabelView.swift */; };
+		9CF2B02E243DF49F00CC0B2F /* BarChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2B01C243DF49F00CC0B2F /* BarChartCell.swift */; };
+		9CF2B02F243DF49F00CC0B2F /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2B01D243DF49F00CC0B2F /* Helpers.swift */; };
+		9CF2B030243DF49F00CC0B2F /* PieChartRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2B01F243DF49F00CC0B2F /* PieChartRow.swift */; };
+		9CF2B031243DF49F00CC0B2F /* PieChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2B020243DF49F00CC0B2F /* PieChartCell.swift */; };
+		9CF2B032243DF49F00CC0B2F /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2B021243DF49F00CC0B2F /* PieChartView.swift */; };
+		9CF2B033243DF49F00CC0B2F /* IndicatorPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2B023243DF49F00CC0B2F /* IndicatorPoint.swift */; };
+		9CF2B034243DF49F00CC0B2F /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2B024243DF49F00CC0B2F /* LineView.swift */; };
+		9CF2B035243DF49F00CC0B2F /* Legend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2B025243DF49F00CC0B2F /* Legend.swift */; };
+		9CF2B036243DF49F00CC0B2F /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2B026243DF49F00CC0B2F /* LineChartView.swift */; };
+		9CF2B037243DF49F00CC0B2F /* MagnifierRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2B027243DF49F00CC0B2F /* MagnifierRect.swift */; };
+		9CF2B038243DF49F00CC0B2F /* Path+QuadCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2B028243DF49F00CC0B2F /* Path+QuadCurve.swift */; };
+		9CF2B039243DF49F00CC0B2F /* MultiLineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2B029243DF49F00CC0B2F /* MultiLineChartView.swift */; };
+		9CF2B03A243DF49F00CC0B2F /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF2B02A243DF49F00CC0B2F /* Line.swift */; };
 		A58E84ACF9716B9AA33C3F38 /* Pods_covid_infoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFE0E2000CF0BEAFD0EB0F5 /* Pods_covid_infoTests.framework */; };
 		E2BAB2A9422987AF3332871F /* Pods_covid_info.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93582C92BCAD91E28BC52037 /* Pods_covid_info.framework */; };
 /* End PBXBuildFile section */
@@ -101,6 +120,24 @@
 		9CF2B003243C913A00CC0B2F /* covid-info-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "covid-info-Bridging-Header.h"; sourceTree = "<group>"; };
 		9CF2B004243C913A00CC0B2F /* AggregatorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AggregatorViewController.h; sourceTree = "<group>"; };
 		9CF2B005243C913A00CC0B2F /* AggregatorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AggregatorViewController.m; sourceTree = "<group>"; };
+		9CF2B010243DEDB800CC0B2F /* CountryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailViewController.swift; sourceTree = "<group>"; };
+		9CF2B012243DEF5500CC0B2F /* ScrollableStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableStackView.swift; sourceTree = "<group>"; };
+		9CF2B019243DF49F00CC0B2F /* BarChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
+		9CF2B01A243DF49F00CC0B2F /* BarChartRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartRow.swift; sourceTree = "<group>"; };
+		9CF2B01B243DF49F00CC0B2F /* LabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelView.swift; sourceTree = "<group>"; };
+		9CF2B01C243DF49F00CC0B2F /* BarChartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarChartCell.swift; sourceTree = "<group>"; };
+		9CF2B01D243DF49F00CC0B2F /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		9CF2B01F243DF49F00CC0B2F /* PieChartRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartRow.swift; sourceTree = "<group>"; };
+		9CF2B020243DF49F00CC0B2F /* PieChartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartCell.swift; sourceTree = "<group>"; };
+		9CF2B021243DF49F00CC0B2F /* PieChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
+		9CF2B023243DF49F00CC0B2F /* IndicatorPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicatorPoint.swift; sourceTree = "<group>"; };
+		9CF2B024243DF49F00CC0B2F /* LineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
+		9CF2B025243DF49F00CC0B2F /* Legend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Legend.swift; sourceTree = "<group>"; };
+		9CF2B026243DF49F00CC0B2F /* LineChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
+		9CF2B027243DF49F00CC0B2F /* MagnifierRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagnifierRect.swift; sourceTree = "<group>"; };
+		9CF2B028243DF49F00CC0B2F /* Path+QuadCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Path+QuadCurve.swift"; sourceTree = "<group>"; };
+		9CF2B029243DF49F00CC0B2F /* MultiLineChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiLineChartView.swift; sourceTree = "<group>"; };
+		9CF2B02A243DF49F00CC0B2F /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		DAFE0E2000CF0BEAFD0EB0F5 /* Pods_covid_infoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_covid_infoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -110,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2BAB2A9422987AF3332871F /* Pods_covid_info.framework in Frameworks */,
+				9CF2B00F243DED0200CC0B2F /* SPStorkController in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,17 +220,19 @@
 				9CDE22102433BB9700A3505A /* Info.plist */,
 				9CF2B003243C913A00CC0B2F /* covid-info-Bridging-Header.h */,
 				9CDE21FF2433BB9400A3505A /* AppDelegate.swift */,
-				9CF2B008243C915500CC0B2F /* New Group */,
+				9CF2B008243C915500CC0B2F /* Aggregator */,
 				9CDE22012433BB9400A3505A /* SceneDelegate.swift */,
 				9CDE22032433BB9400A3505A /* ViewController.swift */,
 				9CDE22052433BB9400A3505A /* Main.storyboard */,
 				9CDE220D2433BB9700A3505A /* LaunchScreen.storyboard */,
 				9CDE22322433BE0D00A3505A /* CountryCardsTableViewController.swift */,
 				9C9D4FDC2434E2C700B1C9EC /* NewsCardsTableViewController.swift */,
+				9CF2B010243DEDB800CC0B2F /* CountryDetailViewController.swift */,
 				9C95A8A824375A0E00D19FF0 /* Resources */,
 				9CDE22082433BB9400A3505A /* covid_info.xcdatamodeld */,
 				9CDE223B2433BEC000A3505A /* Network */,
 				9CDE22342433BEB800A3505A /* Helpers */,
+				9CF2B017243DF49F00CC0B2F /* SwiftUICharts */,
 			);
 			path = "covid-info";
 			sourceTree = "<group>";
@@ -222,6 +262,7 @@
 				9CDE22362433BEB800A3505A /* ColorExtensions.swift */,
 				9CDE22372433BEB800A3505A /* Extensions.swift */,
 				9C95A8992437560900D19FF0 /* StringExtensions.swift */,
+				9CF2B012243DEF5500CC0B2F /* ScrollableStackView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -236,13 +277,60 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		9CF2B008243C915500CC0B2F /* New Group */ = {
+		9CF2B008243C915500CC0B2F /* Aggregator */ = {
 			isa = PBXGroup;
 			children = (
 				9CF2B004243C913A00CC0B2F /* AggregatorViewController.h */,
 				9CF2B005243C913A00CC0B2F /* AggregatorViewController.m */,
 			);
-			path = "New Group";
+			path = Aggregator;
+			sourceTree = "<group>";
+		};
+		9CF2B017243DF49F00CC0B2F /* SwiftUICharts */ = {
+			isa = PBXGroup;
+			children = (
+				9CF2B018243DF49F00CC0B2F /* BarChart */,
+				9CF2B01D243DF49F00CC0B2F /* Helpers.swift */,
+				9CF2B01E243DF49F00CC0B2F /* PieChart */,
+				9CF2B022243DF49F00CC0B2F /* LineChart */,
+			);
+			path = SwiftUICharts;
+			sourceTree = "<group>";
+		};
+		9CF2B018243DF49F00CC0B2F /* BarChart */ = {
+			isa = PBXGroup;
+			children = (
+				9CF2B019243DF49F00CC0B2F /* BarChartView.swift */,
+				9CF2B01A243DF49F00CC0B2F /* BarChartRow.swift */,
+				9CF2B01B243DF49F00CC0B2F /* LabelView.swift */,
+				9CF2B01C243DF49F00CC0B2F /* BarChartCell.swift */,
+			);
+			path = BarChart;
+			sourceTree = "<group>";
+		};
+		9CF2B01E243DF49F00CC0B2F /* PieChart */ = {
+			isa = PBXGroup;
+			children = (
+				9CF2B01F243DF49F00CC0B2F /* PieChartRow.swift */,
+				9CF2B020243DF49F00CC0B2F /* PieChartCell.swift */,
+				9CF2B021243DF49F00CC0B2F /* PieChartView.swift */,
+			);
+			path = PieChart;
+			sourceTree = "<group>";
+		};
+		9CF2B022243DF49F00CC0B2F /* LineChart */ = {
+			isa = PBXGroup;
+			children = (
+				9CF2B023243DF49F00CC0B2F /* IndicatorPoint.swift */,
+				9CF2B024243DF49F00CC0B2F /* LineView.swift */,
+				9CF2B025243DF49F00CC0B2F /* Legend.swift */,
+				9CF2B026243DF49F00CC0B2F /* LineChartView.swift */,
+				9CF2B027243DF49F00CC0B2F /* MagnifierRect.swift */,
+				9CF2B028243DF49F00CC0B2F /* Path+QuadCurve.swift */,
+				9CF2B029243DF49F00CC0B2F /* MultiLineChartView.swift */,
+				9CF2B02A243DF49F00CC0B2F /* Line.swift */,
+			);
+			path = LineChart;
 			sourceTree = "<group>";
 		};
 		DBF7386E886AB6699DBA81BA /* Frameworks */ = {
@@ -267,12 +355,16 @@
 				9CDE21F92433BB9400A3505A /* Frameworks */,
 				9CDE21FA2433BB9400A3505A /* Resources */,
 				7BFF08253B25C53BFFE9289C /* [CP] Embed Pods Frameworks */,
+				9CF2B03B243DF8A200CC0B2F /* Run Lint Script */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "covid-info";
+			packageProductDependencies = (
+				9CF2B00E243DED0200CC0B2F /* SPStorkController */,
+			);
 			productName = "covid-info";
 			productReference = 9CDE21FC2433BB9400A3505A /* covid-info.app */;
 			productType = "com.apple.product-type.application";
@@ -354,6 +446,9 @@
 				it,
 			);
 			mainGroup = 9CDE21F32433BB9400A3505A;
+			packageReferences = (
+				9CF2B00D243DED0200CC0B2F /* XCRemoteSwiftPackageReference "SPStorkController" */,
+			);
 			productRefGroup = 9CDE21FD2433BB9400A3505A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -472,6 +567,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-covid-info/Pods-covid-info-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9CF2B03B243DF8A200CC0B2F /* Run Lint Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Lint Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# if which swiftlint >/dev/null; then\n#  swiftlint\n# else\n#  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n# fi\n";
+		};
 		B5D7E0626D62B0AECE7A066B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -501,20 +614,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CF2B032243DF49F00CC0B2F /* PieChartView.swift in Sources */,
 				9CDE22042433BB9400A3505A /* ViewController.swift in Sources */,
+				9CF2B02F243DF49F00CC0B2F /* Helpers.swift in Sources */,
+				9CF2B036243DF49F00CC0B2F /* LineChartView.swift in Sources */,
+				9CF2B02D243DF49F00CC0B2F /* LabelView.swift in Sources */,
+				9CF2B034243DF49F00CC0B2F /* LineView.swift in Sources */,
 				9CDE22382433BEB800A3505A /* Logger.swift in Sources */,
+				9CF2B031243DF49F00CC0B2F /* PieChartCell.swift in Sources */,
 				9CDE22002433BB9400A3505A /* AppDelegate.swift in Sources */,
+				9CF2B011243DEDB800CC0B2F /* CountryDetailViewController.swift in Sources */,
+				9CF2B030243DF49F00CC0B2F /* PieChartRow.swift in Sources */,
+				9CF2B035243DF49F00CC0B2F /* Legend.swift in Sources */,
 				9CDE223A2433BEB800A3505A /* Extensions.swift in Sources */,
+				9CF2B03A243DF49F00CC0B2F /* Line.swift in Sources */,
 				9CDE223F2433BEC000A3505A /* APIWorker.swift in Sources */,
 				9CDE22332433BE0D00A3505A /* CountryCardsTableViewController.swift in Sources */,
+				9CF2B038243DF49F00CC0B2F /* Path+QuadCurve.swift in Sources */,
+				9CF2B02B243DF49F00CC0B2F /* BarChartView.swift in Sources */,
 				9C9D4FDD2434E2C700B1C9EC /* NewsCardsTableViewController.swift in Sources */,
+				9CF2B013243DEF5500CC0B2F /* ScrollableStackView.swift in Sources */,
 				9CF2B006243C913A00CC0B2F /* AggregatorViewController.m in Sources */,
 				9CDE22022433BB9400A3505A /* SceneDelegate.swift in Sources */,
 				9CDE220A2433BB9400A3505A /* covid_info.xcdatamodeld in Sources */,
+				9CF2B02C243DF49F00CC0B2F /* BarChartRow.swift in Sources */,
 				9CDE22392433BEB800A3505A /* ColorExtensions.swift in Sources */,
+				9CF2B02E243DF49F00CC0B2F /* BarChartCell.swift in Sources */,
 				9CDE22402433BEC000A3505A /* DTO.swift in Sources */,
 				9C95A89A2437560900D19FF0 /* StringExtensions.swift in Sources */,
+				9CF2B037243DF49F00CC0B2F /* MagnifierRect.swift in Sources */,
 				9CDE22412433BEC000A3505A /* XMLParserManager.swift in Sources */,
+				9CF2B039243DF49F00CC0B2F /* MultiLineChartView.swift in Sources */,
+				9CF2B033243DF49F00CC0B2F /* IndicatorPoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -873,6 +1004,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9CF2B00D243DED0200CC0B2F /* XCRemoteSwiftPackageReference "SPStorkController" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ivanvorobei/SPStorkController";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.8.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9CF2B00E243DED0200CC0B2F /* SPStorkController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9CF2B00D243DED0200CC0B2F /* XCRemoteSwiftPackageReference "SPStorkController" */;
+			productName = SPStorkController;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		9CDE22082433BB9400A3505A /* covid_info.xcdatamodeld */ = {
