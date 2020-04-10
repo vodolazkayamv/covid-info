@@ -31,7 +31,6 @@ public struct LineChartView: View {
         }
     }
     @State private var currentKey: String = "NaN"
-    let frame = CGSize(width: 180, height: 120)
     private var rateValue: Int
     
     public init(data: [Double],
@@ -123,7 +122,7 @@ public struct LineChartView: View {
         .onChanged({ value in
             self.touchLocation = value.location
             self.showIndicatorDot = true
-            self.getClosestDataPoint(toPoint: value.location, width:self.frame.width, height: self.frame.height)
+            self.getClosestDataPoint(toPoint: value.location, width:self.formSize.width, height: self.formSize.height)
         })
             .onEnded({ value in
                 self.showIndicatorDot = false

@@ -23,7 +23,7 @@ class APIWorker {
                         let countries : [COVIDStat] = try decoder.decode([COVIDStat].self, from: dataResponse)
                         
                         
-                        askAPIvia(urlString: "https://corona.lmao.ninja/v2/historical/",
+                        askAPIvia(urlString: "https://corona.lmao.ninja/v2/historical",
                                   completionHandler: { dataResponse in
                                     do{
                                         let decoder = JSONDecoder()
@@ -38,7 +38,9 @@ class APIWorker {
                                                 // you know that location is not nil here
                                                 let result = resultArray[location]
                                                 
-                                                var history : HistoryDecoded = HistoryDecoded(country: result.country, casesHistory: [], deathHistory: [])
+                                                var history : HistoryDecoded = HistoryDecoded(country: result.country, casesHistory: [], deathHistory: [], recoveredHistory: [], activeHistory: [])
+                                                
+                                                if (result.province == nil) {
                                                 for item in result.timeline.cases {
                                                     
                                                     let isoDate = item.key
@@ -59,13 +61,26 @@ class APIWorker {
                                                     let record : Case = Case(date: date, number: item.value)
                                                     history.deathHistory.append(record)
                                                 }
+                                                for item in result.timeline.recovered {
+                                                    
+                                                    let isoDate = item.key
+                                                    let dateFormatter = DateFormatter()
+                                                    dateFormatter.dateFormat = "MM/dd/yy"
+                                                    let date = dateFormatter.date(from:isoDate)!
+                                                    
+                                                    let record : Case = Case(date: date, number: item.value)
+                                                    history.recoveredHistory.append(record)
+                                                }
                                                 history.casesHistory = history.casesHistory.sorted(by: {
                                                     $0.date.compare($1.date) == .orderedDescending
                                                 })
                                                 history.deathHistory = history.deathHistory.sorted(by: {
                                                     $0.date.compare($1.date) == .orderedDescending
                                                 })
-                                                
+                                                history.recoveredHistory = history.recoveredHistory.sorted(by: {
+                                                    $0.date.compare($1.date) == .orderedDescending
+                                                })
+                                                }
                                                 let JHUSomeCountryInfo : JHUCountryInfo = JHUCountryInfo(today: country, history: history)
                                                 
                                                 let locale = Locale.current
@@ -76,6 +91,7 @@ class APIWorker {
                                                 } else {
                                                     info.append(JHUSomeCountryInfo)
                                                 }
+                                            
                                             }
                                             
                                             let dataDict:[String: [JHUCountryInfo]] = ["result": info]

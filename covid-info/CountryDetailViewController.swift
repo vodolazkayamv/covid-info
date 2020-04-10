@@ -27,7 +27,7 @@ class CountryDetailViewController: UIViewController {
         self.view.backgroundColor = UIColor(hexString: "FFFFFF", alpha: 1)
         structureStack = UIStackView()
         structureStack.axis = .vertical
-        structureStack.alignment = .leading
+        structureStack.alignment = .center
         self.view.addSubview(structureStack)
         structureStack.translatesAutoresizingMaskIntoConstraints = false;
         NSLayoutConstraint.activate([
@@ -55,12 +55,34 @@ class CountryDetailViewController: UIViewController {
             chartsStack.leadingAnchor.constraint(equalTo: structureStack.leadingAnchor),
             chartsStack.trailingAnchor.constraint(equalTo: structureStack.trailingAnchor),
         ])
-
+        structureStack.setCustomSpacing(20, after: chartsStack)
+        
         addCasesHistoryChart()
         addDeathsHistoryChart()
+        if (country.history.activeHistory.count == 0) {
+            countActiveHistory()
+        }
+        addActiveHistoryChart()
         
         let spacer : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 100))
         structureStack.addArrangedSubview(spacer)
+        
+        
+    }
+    
+    func countActiveHistory() {
+        for i in 0..<country.history.casesHistory.count {
+            let cases = country.history.casesHistory[i].number
+            let deaths = country.history.deathHistory[i].number
+            let recovered = country.history.recoveredHistory[i].number
+            
+            let active = cases - (deaths + recovered)
+            let date = country.history.casesHistory[i].date
+            country.history.activeHistory.append(Case(date: date, number: active))
+        }
+        country.history.activeHistory = country.history.activeHistory.sorted(by: {
+            $0.date.compare($1.date) == .orderedDescending
+        })
     }
     
     func addCasesHistoryChart() {
@@ -114,6 +136,36 @@ class CountryDetailViewController: UIViewController {
         addChild(childView)
         childView.view.bounds = view.frame.insetBy(dx: 0.0, dy: -15.0);
         chartsStack.addArrangedSubview(childView.view)
+    }
+    
+    func addActiveHistoryChart() {
+        var points : [ChartDataPoint] = []
+        for i in 1...country.history.activeHistory.count {
+            let item = country.history.activeHistory[country.history.activeHistory.count - i]
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM/dd/yy"
+            let string = dateFormatter.string(from: item.date)
+            let point : ChartDataPoint = ChartDataPoint(key: string, value: Double(item.number))
+            points.append(point)
+        }
+        
+        let lineChartStyle = ChartStyle(
+            backgroundColor: Color.white,
+            accentColor: Color.init(.orange),
+            gradientColor: GradientColor(start: Colors.OrangeStart, end: Colors.OrangeEnd),
+            textColor: Color.black,
+            legendTextColor: Color.gray,
+            dropShadowColor: Color.gray,
+            lineBackgroundGradient: Gradient(colors: [Color(.systemGreen), .white]))
+
+        let chartTitle = "active".localized()
+        var chart : LineChartView = LineChartView(data: ChartData(points:points), title: chartTitle, style: lineChartStyle, form: ChartForm.large, rateValue: country.deathDeviation)
+        chart.title = "active".localized()
+        
+        let childView = UIHostingController(rootView: chart)
+        addChild(childView)
+        childView.view.bounds = view.frame.insetBy(dx: 0.0, dy: -15.0);
+        structureStack.addArrangedSubview(childView.view)
     }
 
 }

@@ -25,12 +25,14 @@ struct CountryInfo : Decodable {
 
 struct History : Decodable  {
     let country : String
+    let province : String?
     let timeline : Timeline
 }
 
 struct Timeline : Decodable  {
     let cases : [String:Int]
     let deaths : [String:Int]
+    let recovered: [String:Int]
 }
 
 struct Case {
@@ -42,6 +44,8 @@ struct HistoryDecoded {
     let country: String
     var casesHistory : [Case]
     var deathHistory : [Case]
+    var recoveredHistory : [Case]
+    var activeHistory : [Case]
 }
 
 struct JHUCountryInfo : CustomStringConvertible, Equatable {
@@ -65,7 +69,7 @@ struct JHUCountryInfo : CustomStringConvertible, Equatable {
         self.statisticsToday = COVIDStat(active:-1, cases: -1, critical: -1, deaths: -1, recovered: -1, todayCases: -1, todayDeaths: -1, country: "", deathsPerOneMillion: -1, casesPerOneMillion: -1, countryInfo: CountryInfo(_id: -1, lat: -1, long: -1, flag: "", iso2: "", iso3: ""), updated: nil)
         self.country = ""
         
-        self.history = HistoryDecoded(country: "", casesHistory: [], deathHistory: [])
+        self.history = HistoryDecoded(country: "", casesHistory: [], deathHistory: [], recoveredHistory: [], activeHistory: [])
     }
     
     static func ==(lhs: JHUCountryInfo, rhs: JHUCountryInfo) -> Bool {

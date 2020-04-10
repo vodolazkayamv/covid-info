@@ -134,7 +134,7 @@ class CountryCardsTableViewController : UITableViewController {
         
         let controller = CountryDetailViewController()
         controller.country = country
-        self.presentAsStork(controller,height: 375)
+        self.presentAsStork(controller,height: 575)
     }
     
 }
