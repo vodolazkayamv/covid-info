@@ -117,7 +117,7 @@ class CountryCardsTableViewController : UITableViewController {
             ? "▲" + "\(country.deathDeviation)"
             : "▼" + "\(country.deathDeviation * (-1))")
         deathsDevLabel.text = deviationStringDeath
-        deathsDevLabel.textColor = country.deathDeviation > 0 ? UIColor.systemGreen : UIColor.systemRed
+        deathsDevLabel.textColor = country.deathDeviation > 0 ? UIColor.systemRed : UIColor.systemGreen
         
 
 
@@ -134,7 +134,7 @@ class CountryCardsTableViewController : UITableViewController {
         
         let controller = CountryDetailViewController()
         controller.country = country
-        self.presentAsStork(controller,height: 350)
+        self.presentAsStork(controller,height: 375)
     }
     
 }

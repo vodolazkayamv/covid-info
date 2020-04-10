@@ -58,7 +58,7 @@ public struct LineChartView: View {
                 title: String,
                 legend: String? = nil,
                 style: ChartStyle = Styles.lineChartStyleOne,
-                form: CGSize? = ChartForm.medium,
+                form: CGSize? = ChartForm.small,
                 rateValue: Int? = 14,
                 dropShadow: Bool? = true,
                 valueSpecifier: String? = "%.1f") {
@@ -78,64 +78,45 @@ public struct LineChartView: View {
         ZStack(alignment: .center){
             RoundedRectangle(cornerRadius: 20)
                 .fill(self.colorScheme == .dark ? self.darkModeStyle.backgroundColor : self.style.backgroundColor)
-                .frame(width: frame.width, height: 240, alignment: .center)
+                .frame(width: self.formSize.width, height: self.formSize.height, alignment: .center)
                 .shadow(color: self.style.dropShadowColor, radius: self.dropShadow ? 2 : 0)
-            VStack(alignment: .leading){
-                if(!self.showIndicatorDot){
-                    VStack(alignment: .leading, spacing: 8){
-                        Text(self.title)
+            VStack(alignment: .leading, spacing: 0){
+                
+                    VStack(alignment: .leading, spacing: 0){
+                        Text(self.showIndicatorDot
+                            ? "\(Int(self.currentValue))"
+                            : self.title)
                             .font(.title)
                             .bold()
                             .foregroundColor(self.colorScheme == .dark ? self.darkModeStyle.textColor : self.style.textColor)
-                        if (self.legend != nil){
-                            Text(self.legend!)
+                        .lineLimit(nil)
+                        .animation(nil)
+
+                        Text(self.showIndicatorDot
+                            ? self.currentKey
+                            : "\(self.rateValue)" )
                                 .font(.callout)
                                 .foregroundColor(self.colorScheme == .dark ? self.darkModeStyle.legendTextColor :self.style.legendTextColor)
-                        }
-                        HStack {
-                            if (self.rateValue >= 0){
-                                Image(systemName: "arrow.up")
-                            }else{
-                                Image(systemName: "arrow.down")
-                            }
-                            Text("\(self.rateValue)")
-                        }
-                    }
-                    .transition(.opacity)
-                    .animation(.easeIn(duration: 0.1))
-                    .padding([.leading, .top])
-                }else{
-                    VStack{
-                        HStack{
-                        Spacer()
-                        Text("\(Int(self.currentValue))")
-                            .font(.system(size: 38, weight: .bold, design: .default))
-                            .offset(x: 0, y: 30)
-                        Spacer()
-                        }
-                        Text("\(self.currentKey)")
-                            .font(.callout)
-                            .foregroundColor(self.colorScheme == .dark ? self.darkModeStyle.legendTextColor :self.style.legendTextColor)
-                            .offset(x: 0, y: 30)
-                        Spacer()
-                    }
-                    .transition(.scale)
-                }
-                Spacer()
+                        .lineLimit(nil)
+                        .animation(nil)
+                        
+                    }.transition(.opacity)
+                        .animation(.easeIn(duration: 0.1))
+                        .padding([.leading, .top])
+                
+                
                 GeometryReader{ geometry in
                     Line(data: self.data,
-                        frame: .constant(geometry.frame(in: .local)),
-                        touchLocation: self.$touchLocation,
-                        showIndicator: self.$showIndicatorDot,
-                        minDataValue: .constant(nil),
-                        maxDataValue: .constant(nil),
-                        gradient: self.style.gradientColor,
-                        backgroundGradient: self.style.lineBackgroundGradient
+                         frame: .constant(geometry.frame(in: .local)),
+                         touchLocation: self.$touchLocation,
+                         showIndicator: self.$showIndicatorDot,
+                         minDataValue: .constant(nil),
+                         maxDataValue: .constant(nil),
+                         gradient: self.style.gradientColor,
+                         backgroundGradient: self.style.lineBackgroundGradient
                     )
-                }
-                .frame(width: frame.width, height: frame.height + 10)
-                .clipShape(RoundedRectangle(cornerRadius: 20))
-                .offset(x: 0, y: 0)
+                }.clipShape(RoundedRectangle(cornerRadius: 20))
+                    .offset(x: 0, y: 0)
             }.frame(width: self.formSize.width, height: self.formSize.height)
         }
         .gesture(DragGesture()
@@ -168,7 +149,7 @@ public struct LineChartView: View {
 struct WidgetView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            LineChartView(data: [0,18,23,54,32,12,37,17,23,43], title: "Line chart", legend: "Basic")
+            LineChartView(data: [0,18,23,54,32,12,37,17,23,43], title: "Line chart very long title", legend: "Basic", form: ChartForm.small)
                 .environment(\.colorScheme, .light)
         }
     }

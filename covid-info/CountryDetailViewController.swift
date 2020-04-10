@@ -26,25 +26,37 @@ class CountryDetailViewController: UIViewController {
         
         self.view.backgroundColor = UIColor(hexString: "FFFFFF", alpha: 1)
         structureStack = UIStackView()
-        structureStack.axis = .horizontal
-        structureStack.alignment = .center
+        structureStack.axis = .vertical
+        structureStack.alignment = .leading
         self.view.addSubview(structureStack)
         structureStack.translatesAutoresizingMaskIntoConstraints = false;
         NSLayoutConstraint.activate([
-            structureStack.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            structureStack.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            structureStack.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 10),
+            structureStack.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 25),
+            structureStack.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 25),
+            structureStack.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 30),
             structureStack.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
         
+        let titleLabel : UILabel = UILabel()
+        titleLabel.text = "\(country.country)"
+        titleLabel.font = .systemFont(ofSize: 24, weight: .black)
+        structureStack.addArrangedSubview(titleLabel)
+        let subtitleLabel : UILabel = UILabel()
+        subtitleLabel.text = "Detailed statistics"
+        subtitleLabel.font = .systemFont(ofSize: 16, weight: .thin)
+        structureStack.addArrangedSubview(subtitleLabel)
 
         chartsStack = UIStackView()
         chartsStack.axis = .horizontal
         chartsStack.alignment = .center
+        chartsStack.spacing = 10
         structureStack.addArrangedSubview(chartsStack)
 
         addCasesHistoryChart()
         addDeathsHistoryChart()
+        
+        let spacer : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 100))
+        structureStack.addArrangedSubview(spacer)
     }
     
     func addCasesHistoryChart() {
