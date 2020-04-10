@@ -32,7 +32,7 @@ class CountryDetailViewController: UIViewController {
         structureStack.translatesAutoresizingMaskIntoConstraints = false;
         NSLayoutConstraint.activate([
             structureStack.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 25),
-            structureStack.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 25),
+            structureStack.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -25),
             structureStack.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 30),
             structureStack.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
@@ -48,9 +48,13 @@ class CountryDetailViewController: UIViewController {
 
         chartsStack = UIStackView()
         chartsStack.axis = .horizontal
-        chartsStack.alignment = .center
         chartsStack.spacing = 10
+        chartsStack.distribution = .fillEqually
         structureStack.addArrangedSubview(chartsStack)
+        NSLayoutConstraint.activate([
+            chartsStack.leadingAnchor.constraint(equalTo: structureStack.leadingAnchor),
+            chartsStack.trailingAnchor.constraint(equalTo: structureStack.trailingAnchor),
+        ])
 
         addCasesHistoryChart()
         addDeathsHistoryChart()
