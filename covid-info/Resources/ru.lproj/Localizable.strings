@@ -12,6 +12,11 @@
 "recovered" = "Выздоровели";
 "active" = "Болеют сейчас";
 "today" = "Today";
+"Cases history" = "История";
+"Cases" = "Выявлено";
+"Deaths" = "Умерло";
+"all time" = "За все время";
+
 
 "Health Control news" = "Новости здравоохранения";
 "Breaking News" =  "Главные новости";

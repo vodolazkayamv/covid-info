@@ -74,10 +74,10 @@ class CountryDetailViewController: UIViewController {
             let point : ChartDataPoint = ChartDataPoint(key: string, value: Double(previousItem.number - item.number))
             points.append(point)
         }
-        
-        var chart : LineChartView = LineChartView(data: ChartData(points:points), title: "Cases history", rateValue: country.casesDeviation)
-        chart.title = "Cases"
-        chart.legend = "all time"
+        let chartTitle = NSLocalizedString("Cases history", comment: "Cases history")
+        var chart : LineChartView = LineChartView(data: ChartData(points:points), title: chartTitle, rateValue: country.casesDeviation)
+        chart.title = NSLocalizedString("Cases", comment: "Cases")
+        chart.legend = NSLocalizedString("all time",comment: "all time")
         let childView = UIHostingController(rootView: chart)
         addChild(childView)
         childView.view.bounds = view.frame.insetBy(dx: 0.0, dy: -15.0);
@@ -104,10 +104,11 @@ class CountryDetailViewController: UIViewController {
             legendTextColor: Color.gray,
             dropShadowColor: Color.gray,
             lineBackgroundGradient: Gradient(colors: [Colors.OrangeStart, .white]))
-        
-        var chart : LineChartView = LineChartView(data: ChartData(points:points), title: "Cases history", style: lineChartStyle, rateValue: country.deathDeviation)
-        chart.title = "Deaths"
-        chart.legend = "all time"
+
+        let chartTitle = NSLocalizedString("Cases history", comment: "Cases history")
+        var chart : LineChartView = LineChartView(data: ChartData(points:points), title: chartTitle, style: lineChartStyle, rateValue: country.deathDeviation)
+        chart.title = NSLocalizedString("Deaths",comment: "Deaths")
+        chart.legend = NSLocalizedString("all time",comment: "all time")
         
         let childView = UIHostingController(rootView: chart)
         addChild(childView)
