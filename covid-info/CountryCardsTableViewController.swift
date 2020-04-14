@@ -67,6 +67,10 @@ class CountryCardsTableViewController : UITableViewController {
         let titleLabel : UILabel = cell.viewWithTag(11) as! UILabel
         titleLabel.text = country.country
         
+        let placeLabel : UILabel = cell.viewWithTag(14) as! UILabel
+        let index = (cards.firstIndex(of: country) ?? 0) + 1
+        placeLabel.text = "\(index)"
+        
         let updatedLabel : UILabel = cell.viewWithTag(12) as! UILabel
         if let update : Date = country.updated {
             let formatter = DateFormatter()

@@ -87,6 +87,7 @@ class CountryDetailViewController: UIViewController {
     
     func addCasesHistoryChart() {
         var points : [ChartDataPoint] = []
+        if (country.history.casesHistory.count > 1) {
         for i in 1..<country.history.casesHistory.count {
             let item = country.history.casesHistory[country.history.casesHistory.count - i]
             let previousItem = country.history.casesHistory[country.history.casesHistory.count - i - 1]
@@ -95,6 +96,7 @@ class CountryDetailViewController: UIViewController {
             let string = dateFormatter.string(from: item.date)
             let point : ChartDataPoint = ChartDataPoint(key: string, value: Double(previousItem.number - item.number))
             points.append(point)
+        }
         }
         let chartTitle = NSLocalizedString("Cases history", comment: "Cases history")
         var chart : LineChartView = LineChartView(data: ChartData(points:points), title: chartTitle, rateValue: country.casesDeviation)
@@ -108,6 +110,7 @@ class CountryDetailViewController: UIViewController {
     
     func addDeathsHistoryChart() {
         var points : [ChartDataPoint] = []
+        if (country.history.deathHistory.count > 1) {
         for i in 1..<country.history.deathHistory.count {
             let item = country.history.deathHistory[country.history.deathHistory.count - i]
             let previousItem = country.history.deathHistory[country.history.deathHistory.count - i - 1]
@@ -116,6 +119,7 @@ class CountryDetailViewController: UIViewController {
             let string = dateFormatter.string(from: item.date)
             let point : ChartDataPoint = ChartDataPoint(key: string, value: Double(previousItem.number - item.number))
             points.append(point)
+        }
         }
         
         let lineChartStyle = ChartStyle(
@@ -140,6 +144,7 @@ class CountryDetailViewController: UIViewController {
     
     func addActiveHistoryChart() {
         var points : [ChartDataPoint] = []
+        if (country.history.activeHistory.count > 1) {
         for i in 1...country.history.activeHistory.count {
             let item = country.history.activeHistory[country.history.activeHistory.count - i]
             let dateFormatter = DateFormatter()
@@ -148,7 +153,7 @@ class CountryDetailViewController: UIViewController {
             let point : ChartDataPoint = ChartDataPoint(key: string, value: Double(item.number))
             points.append(point)
         }
-        
+        }
         let lineChartStyle = ChartStyle(
             backgroundColor: Color.white,
             accentColor: Color.init(.orange),

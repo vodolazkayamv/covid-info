@@ -20,7 +20,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
     let newsVC_Top : NewsCardsTableViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewsTableVC") as! NewsCardsTableViewController
     let newsVC_Business : NewsCardsTableViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "NewsTableVC") as! NewsCardsTableViewController
     
-    let aggregatorVC : AggregatorViewController = AggregatorViewController();
+//    let aggregatorVC : AggregatorViewController = AggregatorViewController();
     
     override func viewWillAppear(_ animated: Bool) {
         self.containerStackView.addArrangedSubview(pageVC.view)
@@ -57,7 +57,7 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
     
     fileprivate lazy var pages: [UIViewController] = {
         return [
-            self.countriesVC, self.newsVC_Health, self.newsVC_Top, self.newsVC_Business, aggregatorVC,
+            self.countriesVC, self.newsVC_Health, self.newsVC_Top, self.newsVC_Business
         ]
     }()
     fileprivate func getViewController(withIdentifier identifier: String) -> UIViewController
