@@ -178,3 +178,104 @@ struct Article {
     let description : String
     var image : UIImage?
 }
+
+
+
+// MARK: -
+
+/*
+ SUMMARY
+ 
+ {
+ "Global": {
+     "NewConfirmed": 84178,
+     "TotalConfirmed": 1594124,
+     "NewDeaths": 7117,
+     "TotalDeaths": 95434,
+     "NewRecovered": 25346,
+     "TotalRecovered": 353291
+ },
+ "Countries": [
+     {
+         "Country": "ALA Aland Islands",
+         "CountryCode": "AX",
+         "Slug": "ala-aland-islands",
+         "NewConfirmed": 0,
+         "TotalConfirmed": 0,
+         "NewDeaths": 0,
+         "TotalDeaths": 0,
+         "NewRecovered": 0,
+         "TotalRecovered": 0,
+         "Date": "2020-04-10T14:24:13Z"
+     }
+ */
+
+struct Covid19API_Response : Decodable {
+    var Countries : [Covid19API_Country]
+    let Date : Date?
+    
+    let Global : Covid19API_Global
+}
+
+struct Covid19API_Global : Decodable {
+    let NewConfirmed : Int
+    let NewDeaths : Int
+    let NewRecovered : Int
+    
+    let TotalConfirmed : Int
+    let TotalDeaths : Int
+    let TotalRecovered : Int
+}
+
+struct Covid19API_Country : Decodable {
+    let Country : String
+    let CountryCode : String?
+    let Date : Date?
+
+    let NewConfirmed : Int
+    let NewDeaths : Int
+    let NewRecovered : Int
+
+    let Slug : String
+
+    let TotalConfirmed : Int
+    let TotalDeaths : Int
+    let TotalRecovered : Int
+
+}
+
+/*
+ DAY ONE
+ 
+ [
+ {
+     "Country": "Russian Federation",
+     "CountryCode": "RU",
+     "Lat": "61.52",
+     "Lon": "105.32",
+     "Cases": 2,
+     "Status": "confirmed",
+     "Date": "2020-01-31T00:00:00Z"
+ },
+ */
+
+struct Covid19API_CountryHistoryRecord : Decodable {
+    let Country : String
+    let CountryCode: String
+    let Lat : String
+    let Lon : String
+    let Cases : Int
+    let Status : String
+    let Date : Date
+}
+
+struct CardInfo {
+    let countryToday : Covid19API_Country
+    var confirmedHistory : [Covid19API_CountryHistoryRecord]
+    var deathsHistory : [Covid19API_CountryHistoryRecord]
+    var recoveredHistory : [Covid19API_CountryHistoryRecord]
+
+    var active: Int {
+        return countryToday.TotalConfirmed - countryToday.TotalDeaths - countryToday.TotalRecovered
+    }
+}

@@ -148,7 +148,7 @@ public struct LineChartView: View {
 struct WidgetView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            LineChartView(data: [0,18,23,54,32,12,37,17,23,43], title: "Line chart very long title", legend: "Basic", form: ChartForm.small)
+            LineChartView(data: [0,18,23,54,32,12,37,17,23,43], title: "Line chart very long title", legend: "Basic", form: ChartForm.large)
                 .environment(\.colorScheme, .light)
         }
     }

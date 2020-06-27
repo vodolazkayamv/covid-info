@@ -21,7 +21,7 @@ public struct Line: View {
     var gradient: GradientColor = GradientColor(start: Colors.GradientPurple, end: Colors.GradientNeonBlue)
     var backgroundGradient : Gradient = Gradient(colors: [Colors.GradientUpperBlue, .white])
     var index:Int = 0
-    let padding:CGFloat = 30
+    let padding:CGFloat = 10
     var curvedLines: Bool = true
     var stepWidth: CGFloat {
         if data.points.count < 2 {
@@ -104,6 +104,6 @@ struct Line_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader{ geometry in
             Line(data: ChartData(points: [12,-230,10,54]), frame: .constant(geometry.frame(in: .local)), touchLocation: .constant(CGPoint(x: 100, y: 12)), showIndicator: .constant(true), minDataValue: .constant(nil), maxDataValue: .constant(nil))
-        }.frame(width: 320, height: 160)
+        }.frame(width: 320, height: 120)
     }
 }

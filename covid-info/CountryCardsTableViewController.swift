@@ -12,14 +12,14 @@ import SPStorkController
 
 class CountryCardsTableViewController : UITableViewController {
     
-    var cards : [JHUCountryInfo] = [] {
+    var cards : [CardInfo] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
     }
-    var filteredCards: [JHUCountryInfo] = []
+    var filteredCards: [CardInfo] = []
     var isFiltering: Bool {
       return searchController.isActive && !isSearchBarEmpty
     }
@@ -57,22 +57,30 @@ class CountryCardsTableViewController : UITableViewController {
         cardView.layer.cornerRadius = 10
         cardView.dropShadow()
         
-        let country: JHUCountryInfo
+        let country: Covid19API_Country
+        let confirmedHistory: [Covid19API_CountryHistoryRecord]
+        let deathsHistory: [Covid19API_CountryHistoryRecord]
+
         if isFiltering {
-          country = filteredCards[indexPath.row]
+            country = filteredCards[indexPath.row].countryToday
+            confirmedHistory = cards[indexPath.row].confirmedHistory
+            deathsHistory = cards[indexPath.row].deathsHistory
+
         } else {
-          country = cards[indexPath.row]
+          country = cards[indexPath.row].countryToday
+            confirmedHistory = cards[indexPath.row].confirmedHistory
+            deathsHistory = cards[indexPath.row].deathsHistory
+
         }
        // Configure the cell’s contents.
         let titleLabel : UILabel = cell.viewWithTag(11) as! UILabel
-        titleLabel.text = country.country
+        titleLabel.text = country.Country
         
         let placeLabel : UILabel = cell.viewWithTag(14) as! UILabel
-        let index = (cards.firstIndex(of: country) ?? 0) + 1
-        placeLabel.text = "\(index)"
+        placeLabel.text = "\(indexPath.row+1)"
         
         let updatedLabel : UILabel = cell.viewWithTag(12) as! UILabel
-        if let update : Date = country.updated {
+        if let update : Date = country.Date {
             let formatter = DateFormatter()
             formatter.dateStyle = .long
             formatter.timeStyle = .medium
@@ -81,7 +89,7 @@ class CountryCardsTableViewController : UITableViewController {
             updatedLabel.text = upstring
         }
         
-        if let countryCode = country.statisticsToday.countryInfo.iso2?.lowercased() {
+        if let countryCode = country.CountryCode?.lowercased() /*country.statisticsToday.countryInfo.iso2?.lowercased()*/ {
             let flagImage : UIImage = UIImage(named: countryCode) ?? UIImage()
             let flagImageView : UIImageView = cell.viewWithTag(13) as! UIImageView
             flagImageView.image = flagImage
@@ -91,37 +99,52 @@ class CountryCardsTableViewController : UITableViewController {
             
             flagImageView.contentMode = .scaleAspectFit
         } else {
-            Logger.warning("country missing iso2 code: \(country.country)")
+            Logger.warning("country missing iso2 code: \(country.Country)")
         }
         
         let activeLabel : UILabel = cell.viewWithTag(212) as! UILabel
-        activeLabel.text = "\(country.statisticsToday.active)"
+        let active = country.TotalConfirmed - country.TotalDeaths - country.TotalRecovered
+        activeLabel.text = "\(active)"
         let criticalLabel : UILabel = cell.viewWithTag(222) as! UILabel
-        criticalLabel.text = "\(country.statisticsToday.critical)"
+        //criticalLabel.text = "\(country.statisticsToday.critical)"
         let recoveredLabel : UILabel = cell.viewWithTag(232) as! UILabel
-        recoveredLabel.text = "\(country.statisticsToday.recovered)"
+        recoveredLabel.text = "\(country.TotalRecovered)"
         
         let casesAllLabel : UILabel = cell.viewWithTag(312) as! UILabel
-        casesAllLabel.text = "\(country.statisticsToday.cases)"
+        casesAllLabel.text = "\(country.TotalConfirmed)"
         let casesTodayLabel : UILabel = cell.viewWithTag(322) as! UILabel
-        casesTodayLabel.text = "\(country.statisticsToday.todayCases)"
+        casesTodayLabel.text = "\(country.NewConfirmed)"
+        
         let casesDevLabel : UILabel = cell.viewWithTag(332) as! UILabel
-        let deviationStringCases = (country.casesDeviation > 0
-            ? "▲" + "\(country.casesDeviation)"
-            : "▼" + "\(country.casesDeviation * (-1))")
+        
+        let newCasesToday = confirmedHistory[0].Cases - confirmedHistory[1].Cases
+        let newCasesYesterday = confirmedHistory[1].Cases - confirmedHistory[2].Cases
+        
+        let casesDev = newCasesToday - newCasesYesterday
+        let deviationStringCases = (casesDev > 0
+            ? "▲" + "\(casesDev)"
+            : "▼" + "\(casesDev * (-1))")
         casesDevLabel.text = deviationStringCases
-        casesDevLabel.textColor = country.casesDeviation > 0 ? UIColor.systemGreen : UIColor.systemRed
+        casesDevLabel.textColor = country.NewConfirmed > 0 ? UIColor.systemGreen : UIColor.systemRed
         
         let deathsAllLabel : UILabel = cell.viewWithTag(412) as! UILabel
-        deathsAllLabel.text = "\(country.statisticsToday.deaths)"
+        deathsAllLabel.text = "\(country.TotalDeaths)"
+        
         let deathsTodayLabel : UILabel = cell.viewWithTag(422) as! UILabel
-        deathsTodayLabel.text = "\(country.statisticsToday.todayDeaths)"
+        deathsTodayLabel.text = "\(country.NewDeaths)"
+        
         let deathsDevLabel : UILabel = cell.viewWithTag(432) as! UILabel
-        let deviationStringDeath = (country.deathDeviation > 0
-            ? "▲" + "\(country.deathDeviation)"
-            : "▼" + "\(country.deathDeviation * (-1))")
+        
+        let newDeathsToday = deathsHistory[0].Cases - deathsHistory[1].Cases
+        let newDeathsYesterday = deathsHistory[1].Cases - deathsHistory[2].Cases
+        
+        let deathsDev = newDeathsToday - newDeathsYesterday
+        
+        let deviationStringDeath = (deathsDev > 0
+            ? "▲" + "\(deathsDev)"
+            : "▼" + "\(deathsDev * (-1))")
         deathsDevLabel.text = deviationStringDeath
-        deathsDevLabel.textColor = country.deathDeviation > 0 ? UIColor.systemRed : UIColor.systemGreen
+        deathsDevLabel.textColor = country.NewDeaths > 0 ? UIColor.systemRed : UIColor.systemGreen
         
 
 
@@ -129,7 +152,7 @@ class CountryCardsTableViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let country: JHUCountryInfo
+        let country: CardInfo
         if isFiltering {
           country = filteredCards[indexPath.row]
         } else {
@@ -137,6 +160,7 @@ class CountryCardsTableViewController : UITableViewController {
         }
         
         let controller = CountryDetailViewController()
+        
         controller.country = country
         self.presentAsStork(controller,height: 575)
     }
@@ -149,8 +173,8 @@ extension CountryCardsTableViewController: UISearchResultsUpdating {
     }
     
     func filterContentForSearchText(_ searchText: String) {
-        filteredCards = cards.filter { (card: JHUCountryInfo) -> Bool in
-            return card.country.lowercased().starts(with: searchText.lowercased())
+        filteredCards = cards.filter { (card: CardInfo) -> Bool in
+            return card.countryToday.Country.lowercased().starts(with: searchText.lowercased())
         }
         
         tableView.reloadData()

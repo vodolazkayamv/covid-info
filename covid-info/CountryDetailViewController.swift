@@ -15,7 +15,8 @@ class CountryDetailViewController: UIViewController {
     }
     
     
-    var country : JHUCountryInfo = JHUCountryInfo();
+    var country : CardInfo?
+    
     private var structureStack : UIStackView!
     private var chartsStack : UIStackView!
     
@@ -38,7 +39,7 @@ class CountryDetailViewController: UIViewController {
         ])
         
         let titleLabel : UILabel = UILabel()
-        titleLabel.text = "\(country.country)"
+        titleLabel.text = "\(country?.countryToday.Country ?? "nAn")"
         titleLabel.font = .systemFont(ofSize: 24, weight: .black)
         structureStack.addArrangedSubview(titleLabel)
         let subtitleLabel : UILabel = UILabel()
@@ -47,8 +48,8 @@ class CountryDetailViewController: UIViewController {
         structureStack.addArrangedSubview(subtitleLabel)
 
         chartsStack = UIStackView()
-        chartsStack.axis = .horizontal
-        chartsStack.spacing = 10
+        chartsStack.axis = .vertical
+        chartsStack.spacing = 20
         chartsStack.distribution = .fillEqually
         structureStack.addArrangedSubview(chartsStack)
         NSLayoutConstraint.activate([
@@ -57,69 +58,63 @@ class CountryDetailViewController: UIViewController {
         ])
         structureStack.setCustomSpacing(20, after: chartsStack)
         
-        addCasesHistoryChart()
-        addDeathsHistoryChart()
-        if (country.history.activeHistory.count == 0) {
-            countActiveHistory()
-        }
-        addActiveHistoryChart()
+       
         
-        let spacer : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 100))
+        let spacer : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 20))
         structureStack.addArrangedSubview(spacer)
         
         
-    }
-    
-    func countActiveHistory() {
-        for i in 0..<country.history.casesHistory.count {
-            let cases = country.history.casesHistory[i].number
-            let deaths = country.history.deathHistory[i].number
-            let recovered = country.history.recoveredHistory[i].number
-            
-            let active = cases - (deaths + recovered)
-            let date = country.history.casesHistory[i].date
-            country.history.activeHistory.append(Case(date: date, number: active))
+        if let country = country {
+            addConfirmedChart(confirmedData: country.confirmedHistory)
+            addDeathsChart(confirmedData: country.deathsHistory)
+            addRecoveredChart(confirmedData: country.recoveredHistory)
+
+
         }
-        country.history.activeHistory = country.history.activeHistory.sorted(by: {
-            $0.date.compare($1.date) == .orderedDescending
-        })
+        
     }
     
-    func addCasesHistoryChart() {
+    func addRecoveredChart(confirmedData: [Covid19API_CountryHistoryRecord]) {
         var points : [ChartDataPoint] = []
-        if (country.history.casesHistory.count > 1) {
-        for i in 1..<country.history.casesHistory.count {
-            let item = country.history.casesHistory[country.history.casesHistory.count - i]
-            let previousItem = country.history.casesHistory[country.history.casesHistory.count - i - 1]
+        for i in 1..<confirmedData.count {
+            let item = confirmedData[confirmedData.count - i].Cases
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM/dd/yy"
-            let string = dateFormatter.string(from: item.date)
-            let point : ChartDataPoint = ChartDataPoint(key: string, value: Double(previousItem.number - item.number))
+            let string = dateFormatter.string(from: confirmedData[i].Date)
+            let point : ChartDataPoint = ChartDataPoint(key: string, value: Double(item))
             points.append(point)
         }
+        
+        let lineChartStyle = ChartStyle(
+            backgroundColor: Color.white,
+            accentColor: Color.init(.orange),
+            gradientColor: GradientColor(start: Colors.BorderBlue, end: Colors.DarkPurple),
+            textColor: Color.black,
+            legendTextColor: Color.gray,
+            dropShadowColor: Color.gray,
+            lineBackgroundGradient: Gradient(colors: [Colors.OrangeStart, .white]))
+
+        let chartTitle = "Recovered"
+        var chart : LineChartView = LineChartView(data: ChartData(points:points), title: chartTitle, style: lineChartStyle)
+        chart.formSize = ChartForm.large
+        
+        DispatchQueue.main.async {
+            let childView = UIHostingController(rootView: chart)
+            self.addChild(childView)
+            childView.view.bounds = self.view.frame.insetBy(dx: 0.0, dy: -15.0);
+            self.chartsStack.addArrangedSubview(childView.view)
         }
-        let chartTitle = NSLocalizedString("Cases history", comment: "Cases history")
-        var chart : LineChartView = LineChartView(data: ChartData(points:points), title: chartTitle, rateValue: country.casesDeviation)
-        chart.title = NSLocalizedString("Cases", comment: "Cases")
-        chart.legend = NSLocalizedString("all time",comment: "all time")
-        let childView = UIHostingController(rootView: chart)
-        addChild(childView)
-        childView.view.bounds = view.frame.insetBy(dx: 0.0, dy: -15.0);
-        chartsStack.addArrangedSubview(childView.view)
     }
     
-    func addDeathsHistoryChart() {
+    func addDeathsChart(confirmedData: [Covid19API_CountryHistoryRecord]) {
         var points : [ChartDataPoint] = []
-        if (country.history.deathHistory.count > 1) {
-        for i in 1..<country.history.deathHistory.count {
-            let item = country.history.deathHistory[country.history.deathHistory.count - i]
-            let previousItem = country.history.deathHistory[country.history.deathHistory.count - i - 1]
+        for i in 1..<confirmedData.count {
+            let item = confirmedData[confirmedData.count - i].Cases
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM/dd/yy"
-            let string = dateFormatter.string(from: item.date)
-            let point : ChartDataPoint = ChartDataPoint(key: string, value: Double(previousItem.number - item.number))
+            let string = dateFormatter.string(from: confirmedData[i].Date)
+            let point : ChartDataPoint = ChartDataPoint(key: string, value: Double(item))
             points.append(point)
-        }
         }
         
         let lineChartStyle = ChartStyle(
@@ -131,47 +126,50 @@ class CountryDetailViewController: UIViewController {
             dropShadowColor: Color.gray,
             lineBackgroundGradient: Gradient(colors: [Colors.OrangeStart, .white]))
 
-        let chartTitle = NSLocalizedString("Cases history", comment: "Cases history")
-        var chart : LineChartView = LineChartView(data: ChartData(points:points), title: chartTitle, style: lineChartStyle, rateValue: country.deathDeviation)
-        chart.title = NSLocalizedString("Deaths",comment: "Deaths")
-        chart.legend = NSLocalizedString("all time",comment: "all time")
+        let chartTitle = "Deaths"
+        var chart : LineChartView = LineChartView(data: ChartData(points:points), title: chartTitle, style: lineChartStyle)
+        chart.formSize = ChartForm.large
+
         
-        let childView = UIHostingController(rootView: chart)
-        addChild(childView)
-        childView.view.bounds = view.frame.insetBy(dx: 0.0, dy: -15.0);
-        chartsStack.addArrangedSubview(childView.view)
+        DispatchQueue.main.async {
+            let childView = UIHostingController(rootView: chart)
+            self.addChild(childView)
+            childView.view.bounds = self.view.frame.insetBy(dx: 0.0, dy: -15.0);
+            self.chartsStack.addArrangedSubview(childView.view)
+        }
     }
     
-    func addActiveHistoryChart() {
+    func addConfirmedChart(confirmedData: [Covid19API_CountryHistoryRecord]) {
         var points : [ChartDataPoint] = []
-        if (country.history.activeHistory.count > 1) {
-        for i in 1...country.history.activeHistory.count {
-            let item = country.history.activeHistory[country.history.activeHistory.count - i]
+        for i in 1..<confirmedData.count {
+            let item = confirmedData[confirmedData.count - i].Cases
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM/dd/yy"
-            let string = dateFormatter.string(from: item.date)
-            let point : ChartDataPoint = ChartDataPoint(key: string, value: Double(item.number))
+            let string = dateFormatter.string(from: confirmedData[i].Date)
+            let point : ChartDataPoint = ChartDataPoint(key: string, value: Double(item))
             points.append(point)
         }
-        }
+        
         let lineChartStyle = ChartStyle(
             backgroundColor: Color.white,
             accentColor: Color.init(.orange),
-            gradientColor: GradientColor(start: Colors.OrangeStart, end: Colors.OrangeEnd),
+            gradientColor: GradientColor(start: Colors.GradientNeonBlue, end: Colors.GradientLowerBlue),
             textColor: Color.black,
             legendTextColor: Color.gray,
             dropShadowColor: Color.gray,
-            lineBackgroundGradient: Gradient(colors: [Color(.systemGreen), .white]))
+            lineBackgroundGradient: Gradient(colors: [Colors.OrangeStart, .white]))
 
-        let chartTitle = "active".localized()
-        var chart : LineChartView = LineChartView(data: ChartData(points:points), title: chartTitle, style: lineChartStyle, form: ChartForm.large, rateValue: country.deathDeviation)
-        chart.title = "active".localized()
+        let chartTitle = "Confirmed"
+        var chart : LineChartView = LineChartView(data: ChartData(points:points), title: chartTitle, style: lineChartStyle)
+        chart.formSize = ChartForm.large
+
         
-        let childView = UIHostingController(rootView: chart)
-        addChild(childView)
-        childView.view.bounds = view.frame.insetBy(dx: 0.0, dy: -15.0);
-        structureStack.addArrangedSubview(childView.view)
+        DispatchQueue.main.async {
+            let childView = UIHostingController(rootView: chart)
+            self.addChild(childView)
+            childView.view.bounds = self.view.frame.insetBy(dx: 0.0, dy: -15.0);
+            self.chartsStack.addArrangedSubview(childView.view)
+        }
     }
-
 }
 

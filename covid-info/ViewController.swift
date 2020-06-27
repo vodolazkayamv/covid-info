@@ -38,14 +38,14 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
             titleLabel.text = firstVC.title
         }
 
-        APIWorker.askCOVIDStatisticsAll()
+        APIWorker.askCovid19API_Summary()
         APIWorker.askNewsApi_Health()
         
         self.newsVC_Health.title = NSLocalizedString("Health Control news", comment: "Новости здравоохранения")
         self.newsVC_Top.title = NSLocalizedString("Breaking News", comment: "Главные новости")
         self.newsVC_Business.title = NSLocalizedString("Business News", comment: "Новости бизнеса")
         
-        NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveCountryData(_:)), name: .didReceiveCountryData, object: APIWorker.self)
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveCovid19APICountryData(_:)), name: .didReceiveCovid19APICountryData, object: APIWorker.self)
         NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveNewsHealthData(_:)), name: .didReceiveNewsHealthData, object: APIWorker.self)
         NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveNewsTopData(_:)), name: .didReceiveNewsTopData, object: APIWorker.self)
         NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveNewsBusinessData(_:)), name: .didReceiveBusinessData, object: APIWorker.self)
@@ -160,13 +160,24 @@ class ViewController: UIViewController, UIPageViewControllerDataSource, UIPageVi
         }
     }
     
-    @objc func onDidReceiveCountryData(_ notification: Notification)
+//    @objc func onDidReceiveCountryData(_ notification: Notification)
+//    {
+//        if let dataReceived = notification.userInfo as? [String: [JHUCountryInfo]]
+//        {
+//            for (_, dataArray) in dataReceived
+//            {
+//                self.countriesVC.cards = dataArray
+//            }
+//        }
+//    }
+    
+    @objc func onDidReceiveCovid19APICountryData(_ notification: Notification)
     {
-        if let dataReceived = notification.userInfo as? [String: [JHUCountryInfo]]
+        if let dataReceived = notification.userInfo as? [String: [CardInfo]]
         {
-            for (_, dataArray) in dataReceived
+            for (_, data) in dataReceived
             {
-                self.countriesVC.cards = dataArray
+                self.countriesVC.cards = data
             }
         }
     }

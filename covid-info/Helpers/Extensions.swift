@@ -13,10 +13,12 @@ import UIKit
 extension Notification.Name {
     static let didReceiveNativeCountryData = Notification.Name("didReceiveNativeCountryData")
     static let didReceiveCountryData = Notification.Name("didReceiveCountryData")
+    static let didReceiveCovid19APICountryData = Notification.Name("didReceiveCovid19APICountryData")
+    static let didReceiveCovid19APICountryHistoryData = Notification.Name("didReceiveCovid19APICountryHistoryData")
+
+    
     static let didReceiveNewsData = Notification.Name("didReceiveNewsData")
     static let didReceiveBusinessData = Notification.Name("didReceiveBusinessData")
-
-
     static let didReceiveNewsHealthData = Notification.Name("didReceiveNewsHealthData")
     static let didReceiveNewsTopData = Notification.Name("didReceiveNewsTopData")
 
@@ -33,6 +35,24 @@ extension Date {
 
     init(milliseconds:Int) {
         self = Date(timeIntervalSince1970: TimeInterval(milliseconds / 1000))
+    }
+    
+    static var yesterday: Date { return Date().dayBefore }
+    static var tomorrow:  Date { return Date().dayAfter }
+    var dayBefore: Date {
+        return Calendar.current.date(byAdding: .day, value: -1, to: noon)!
+    }
+    var dayAfter: Date {
+        return Calendar.current.date(byAdding: .day, value: 1, to: noon)!
+    }
+    var noon: Date {
+        return Calendar.current.date(bySettingHour: 12, minute: 0, second: 0, of: self)!
+    }
+    var month: Int {
+        return Calendar.current.component(.month,  from: self)
+    }
+    var isLastDayOfMonth: Bool {
+        return dayAfter.month != month
     }
 }
 
